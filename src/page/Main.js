@@ -1,5 +1,5 @@
 import React, { useState, useEffect }  from 'react'
-import KakaoLogin from '../component/KakaoLogin';
+import KakaoLoginPage from '../component/KakaoLoginPage';
 import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
@@ -27,7 +27,7 @@ const Main = () => {
       {showButtons && (
         <div style={{ textAlign: 'center' }}>
           <button onClick={joinMembership}>로그인</button>
-          <KakaoLogin></KakaoLogin>
+          <KakaoLoginPage></KakaoLoginPage>
         </div>
       )}
     </div>
