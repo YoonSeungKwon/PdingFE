@@ -30,22 +30,26 @@ const Signup = () => {
   const register = () => {
     if (name && email && password && password === passwordCheck) {
       axios
-    .post('http://localhost:3000/register', {
-      username: name,
+    .post('http://13.209.154.183:8080/api/v1/members/', {
+      name: name,
       email: email,
       password: password,
     })
-    .then(response => {
+    .then((response) => {
       // Handle success.
+      console.log(response)
       console.log('Well done!');
-      console.log('User profile', response.data.user);
-      console.log('User token', response.data.jwt);
-      localStorage.setItem('token', response.data.jwt);
+      console.log('User profile', response.data);
       navigate("/login");
     })
-    .catch(error => {
+    .catch((error) => {
       // Handle error.
-      console.log('An error occurred:', error.response);
+      
+      console.log('An error occurred:', error.response.data);
+      const msg = error.response.data.message
+      const code = error.response.data.status
+
+      alert(msg + "  [" + code + "]")
     });
     }
   };
