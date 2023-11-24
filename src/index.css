@@ -1,0 +1,197 @@
+@font-face {
+  font-family : 'pretendard-regular';
+  src : url(../public/font/PRETENDARD-REGULAR.OTF)
+}
+
+@font-face {
+  font-family : 'omyu_pretty';
+  src : url(../public/font/omyu_pretty.ttf)
+}
+
+@font-face {
+  font-family : 'pretendard-bold';
+  src : url(../public/font/PRETENDARD-BOLD.OTF)
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.Main{
+  /* display: flex; 가로 정렬로 바꿔버림 */
+  /* justify-content: center;    가로 가운데 정렬 */
+  /* align-items: center;    세로 가운데 정렬 */
+  /* flex-direction: column; 정렬을 세로로 */
+  /* border-color: black; */
+  display: flex;
+  justify-content: center; 
+  align-items: center;   
+  flex-direction: column; 
+  height: 100vh;
+  background-color: #496D68;
+} 
+
+.full-screen{
+  .Main{
+    /* display: flex; 가로 정렬로 바꿔버림 */
+    /* justify-content: center;    가로 가운데 정렬 */
+    /* align-items: center;    세로 가운데 정렬 */
+    /* flex-direction: column; 정렬을 세로로 */
+    /* border-color: black; */
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    flex-direction: column; 
+    height: 100vh;
+  } 
+}
+
+.show-background {
+  background-image: url(../public/img/loginback.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+
+.mainText{
+  color:white;
+  font-family : 'pretendard-regular';
+  font-family : 'omyu_pretty';
+  margin-bottom: 8vh;
+}
+
+code {
+  font-family: 'pretendard-regular',
+    monospace;
+}
+
+header{
+  background-color: #496D68;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 13%;
+}
+
+.haeder-logo-image{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%; 
+  height: auto; 
+}
+
+.main-items{
+  
+  margin-bottom: 2vh;
+  border-radius: 3px;
+}
+
+.profile-mainment{
+  height: 14vh;
+  padding-top: 4vh;
+  margin:0 2vh;
+  font-family: 'pretendard-regular';
+  font-size: 21px;
+}
+
+.gift-button-box{
+  height:15vh;
+  background-color: #E7F6EF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin:0 2vh;
+  
+}
+
+footer{
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+}
+
+.icons{
+  text-align: center;
+  flex: 1;
+  margin-top: 1.5vh;
+ 
+}
+
+/* div안에 가로 정렬할때(그 위 부모div에 text-align:'center') */
+.row-align{
+  text-align: center;
+  flex: 1;
+}
+
+.writeButton{
+  font-size: 30px;
+  background-color: #496D68;
+  color: white;
+  border: none;
+  border-radius: 100%;
+  width:7.5vh;
+  height:7.5vh;
+}
+
+.card-box-main{
+  
+}
+
+.all-all-screen{
+  /* display: block;
+  overflow-y: auto; */
+  margin-top: 25%;
+  margin-bottom: -20%; 
+  height: 750px;
+}
+
+.all-screen{
+  width:100%;
+  
+  
+}
+
+.cardsMain{
+  width:14rem;
+  font-family: 'pretendard-regular';
+  
+}
+
+.mainGiftText{
+  font-size: larger;
+  margin-bottom: 1vh;
+  margin-top: 2vh;
+  font-family : 'pretendard-regular';
+}
+
+.best-ten{
+  margin-left: 2vh;
+  
+}
+
+.login-btn{
+  width: 398px;
+  height: 48px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  background-color: white;
+  font-family : 'pretendard-regular';
+}
+
+.marginbottonchange{
+  margin-bottom: 1vh;
+  font-family : 'pretendard-regular';
+  
+}
