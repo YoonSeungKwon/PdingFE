@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import FooterNavbar from '../component/FooterNavbar';
+import Greenheader from '../component/Greenheader';
 
 const FriendsList = ({basicUrl}) => {
 
@@ -115,51 +117,55 @@ const FriendsList = ({basicUrl}) => {
 
   return (
     <>
-      <div>
-        <div>친구 검색</div>
-        <input
-          value={searchEamil}
-          onChange={handleEmailChange}
-        />
-        <button onClick={handleSearch}>검색</button>
-        <br/>
-        {searchFriends.map((idx)=>(
-          <div key={idx.email}>
-            <img src={idx.profile} alt={idx.email} width='50px'/>
-            <span>Email : {idx.email}    </span>
-            <span>닉네임  :  {idx.name}   </span>
-            <button onClick={() =>handleFriendRequest(idx, idx.email, idx.oauth)}>친구 신청</button>
+      <div className="full-screen all-all-screen">
+        <Greenheader></Greenheader>
+          <div className='all-screen' >
+            <div>친구 검색</div>
+            <input
+              value={searchEamil}
+              onChange={handleEmailChange}
+            />
+            <button onClick={handleSearch}>검색</button>
+            <br/>
+            {searchFriends.map((idx)=>(
+              <div key={idx.email}>
+                <img src={idx.profile} alt={idx.email} width='50px'/>
+                <span>Email : {idx.email}    </span>
+                <span>닉네임  :  {idx.name}   </span>
+                <button onClick={() =>handleFriendRequest(idx, idx.email, idx.oauth)}>친구 신청</button>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <hr/>
-      <div>
-        <div>받은 친구 요청</div>
-        <br/>
-        {requestFriends.map((idx)=>(
-          <div key={idx.email}>
-            <img src={idx.profile} alt={idx.email} width='50px'/>
-            <span>Email : {idx.email}    </span>
-            <span>닉네임  :  {idx.name}   </span>
-            <button onClick={() =>handleFriendAccept(idx, idx.email, idx.oauth)}>수락</button>
-            <button onClick={() =>handleFriendDecline(idx, idx.email, idx.oauth)}>거절</button>
+          <hr/>
+          <div>
+            <div>받은 친구 요청</div>
+            <br/>
+            {requestFriends.map((idx)=>(
+              <div key={idx.email}>
+                <img src={idx.profile} alt={idx.email} width='50px'/>
+                <span>Email : {idx.email}    </span>
+                <span>닉네임  :  {idx.name}   </span>
+                <button onClick={() =>handleFriendAccept(idx, idx.email, idx.oauth)}>수락</button>
+                <button onClick={() =>handleFriendDecline(idx, idx.email, idx.oauth)}>거절</button>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <hr/>
-      <button onClick={()=>navigate("/write")}>글쓰기</button>
-      <button onClick={()=>handleLogout()}>로그아웃</button>
-      <div>
-        <div>친구 목록</div>
-        <br/>
-        {friendsList.map((idx)=>(
-          <div key={idx.email} style={{border:"1px solid black",width:"700px"}}>
-            <img src={idx.profile} alt={idx.email} width='50px'/>
-            <span style={{marginLeft:"50px"}}>Email : {idx.email}    </span>
-            <span style={{marginLeft:"50px"}}>Name  :  {idx.name}   </span>
-            <button onClick={() =>handleBasket(idx.email, idx.oauth)} style={{float:"right", marginTop:"10px", marginRight:"10px"}}>장바구니 보기</button>
-          </div>
-        ))}
+          <hr/>
+          <button onClick={()=>navigate("/write")}>글쓰기</button>
+          <button onClick={()=>handleLogout()}>로그아웃</button>
+          <div>
+            <div>친구 목록</div>
+            <br/>
+            {friendsList.map((idx)=>(
+              <div key={idx.email} style={{border:"1px solid black",width:"700px"}}>
+                <img src={idx.profile} alt={idx.email} width='50px'/>
+                <span style={{marginLeft:"50px"}}>Email : {idx.email}    </span>
+                <span style={{marginLeft:"50px"}}>Name  :  {idx.name}   </span>
+                <button onClick={() =>handleBasket(idx.email, idx.oauth)} style={{float:"right", marginTop:"10px", marginRight:"10px"}}>장바구니 보기</button>
+              </div>
+            ))}
+            </div>
+          <FooterNavbar></FooterNavbar>
       </div>
     </>
   )

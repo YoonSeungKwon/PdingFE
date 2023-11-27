@@ -1,4 +1,4 @@
-import React, { useRef,useState, useEffect }  from 'react'
+import React, { useRef,useState, useEffect,setState }  from 'react'
 import { useNavigate, useLocation} from 'react-router-dom';
 import KakaoLogin from 'react-kakao-login';
 import axios from 'axios';
@@ -22,37 +22,32 @@ const Home = ({basicUrl}) => {
   const [showButtons, setShowButtons] = useState(false);
 
   const [appKey, setAppKey] = useState("");
+  const userProfile = localStorage.getItem('userProfile');
+  const userName = localStorage.getItem('userName');
 
   const joinMembership = () => {
     navigate('/Login');
   }
 
-  useEffect(() => {
-    // console.log(state);
-    // axios.get(basicUrl + "/login/oauth2/code/kakao"
-    // ).then((res)=>{
-    //   console.log(res);
-    //   setAppKey(res.data.key);
-    // }).catch((error)=>{
-    //   console.log(error);
-    // });
+  useEffect(() => { 
+     console.log({state});
 
 },[]);
 
   return (
     <div className="full-screen all-all-screen">
-      
       <Greenheader></Greenheader>
+      
       <div className='all-screen' >
         <div className='main-items profile-mainment' style={{display: 'flex'}}>
-            <div className='row-align' style={{whiteSpace:'nowrap', textAlign:'left'}}>{state.name}님,<br></br>🎓졸업까지 30일 남았어요!</div>
-            <div><img src={state.profile} className='row-align'></img></div>
+            <div className='row-align' style={{whiteSpace:'nowrap', textAlign:'left'}}>{userName}님,<br></br>🎓<b>졸업</b>까지 <b style={{color:'#F54E3F'}}>30</b>일 남았어요!</div>
+            <div><img src={userProfile} className='row-align profileBox'></img></div>
         </div>
         <div className='main-items gift-button-box'>
-            <button className='writeButton'style={{marginTop:'1.5vh'}} onClick={()=>navigate("/write")}>
-                <p style={{marginTop:'0.4vh'}}>+</p>
+            <button className='writeButton'style={{marginTop:'2vh'}} onClick={()=>navigate("/write")}>
+                <p style={{marginTop:'0.1vh'}}>+</p>
             </button>
-            <div style={{marginTop:'1.5vh', fontFamily:'pretendard-regular'}}>원하는 선물 등록하기</div>
+            <div className='wantedGift'>원하는 선물 프딩하러 가기</div>
         </div>
         <div className='main-items best-ten'>
             <div className='mainGiftText'>인기 선물 TOP 10</div>
@@ -65,7 +60,7 @@ const Home = ({basicUrl}) => {
                     modules={[Scrollbar]}
                     className="mySwiper"
                     spaceBetween={70}
-                    freeMode={false}
+                    slidesOffsetAfter={75}
                     pagination={{
                     clickable: true,
                     }}
@@ -73,9 +68,10 @@ const Home = ({basicUrl}) => {
                 >
                     <SwiperSlide>
                         <Card className='cardsMain'>
-                        <Card.Img variant="top" src="/img/mainItems/dodo.jpg" height="110px" />
-                        <Card.Body className="p-2" >
-                            <Card.Title className="fs-8">Apple 에어팟 3세대</Card.Title>
+                        <Card.Img variant="top" src="/img/mainItems/airpod.png"  height="100px" width="160px" />
+                        <Card.Body className="p-2 border-0" >
+                            <Card.Title className="fs-8  text-truncate">Apple 에어팟 3세대 2022년형</Card.Title>
+                            <Card.Title className="fs-8">235,690원</Card.Title>
                             <Card.Text style={{color:'#7DA79D'}}>
                             #음악 #힐링
                             </Card.Text>
@@ -84,44 +80,36 @@ const Home = ({basicUrl}) => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <Card className='cardsMain'>
-                        <Card.Img variant="top" src="/img/mainItems/dodo.jpg" height="110px" />
+                        <Card.Img variant="top" src="/img/mainItems/camera.png"  height="100px" width="160px" />
                         <Card.Body className="p-2" >
-                            <Card.Title className="fs-8">Apple 에어팟 3세대</Card.Title>
+                            <Card.Title className="fs-8 text-truncate">인스탁스 미니12 + 필름 10매</Card.Title>
+                            <Card.Title className="fs-8">129,000원</Card.Title>
                             <Card.Text style={{color:'#7DA79D'}}>
-                            #음악 #힐링
+                            #사진 #감성
                             </Card.Text>
                         </Card.Body>
                         </Card>
                     </SwiperSlide>
                     <SwiperSlide>
                         <Card className='cardsMain'>
-                        <Card.Img variant="top" src="/img/mainItems/dodo.jpg" height="110px" />
+                        <Card.Img variant="top" src="/img/mainItems/nintendo.jpg"  style={{borderRadius:'5px'}} height="100px" width="160px" />
                         <Card.Body className="p-2" >
-                            <Card.Title className="fs-8">Apple 에어팟 3세대</Card.Title>
+                            <Card.Title className="fs-8 text-truncate">닌텐도 스위치 본체 모여봐요 동물의 숲 에디션</Card.Title>
+                            <Card.Title className="fs-8">365,000원</Card.Title>
                             <Card.Text style={{color:'#7DA79D'}}>
-                            #음악 #힐링
+                            #게임 #취미
                             </Card.Text>
                         </Card.Body>
                         </Card>
                     </SwiperSlide>
                     <SwiperSlide>
                         <Card className='cardsMain'>
-                        <Card.Img variant="top" src="/img/mainItems/dodo.jpg" height="110px" />
+                        <Card.Img variant="top" src="/img/mainItems/adidas.jpg"  style={{borderRadius:'5px'}} height="100px" width="160px" />
                         <Card.Body className="p-2" >
-                            <Card.Title className="fs-8">Apple 에어팟 3세대</Card.Title>
+                            <Card.Title className="fs-8 text-truncate">Adidas 가젤 볼드 W</Card.Title>
+                            <Card.Title className="fs-8 text-truncate">139,000원</Card.Title>
                             <Card.Text style={{color:'#7DA79D'}}>
-                            #음악 #힐링
-                            </Card.Text>
-                        </Card.Body>
-                        </Card>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Card className='cardsMain'>
-                        <Card.Img variant="top" src="/img/mainItems/dodo.jpg" height="110px" />
-                        <Card.Body className="p-2" >
-                            <Card.Title className="fs-8">Apple 에어팟 3세대</Card.Title>
-                            <Card.Text style={{color:'#7DA79D'}}>
-                            #음악 #힐링
+                            #신발 #패션
                             </Card.Text>
                         </Card.Body>
                         </Card>
@@ -140,7 +128,7 @@ const Home = ({basicUrl}) => {
                     modules={[Scrollbar]}
                     className="mySwiper"
                     spaceBetween={70}
-                    freeMode={false}
+                    slidesOffsetAfter={75}
                     pagination={{
                     clickable: true,
                     }}
@@ -148,53 +136,46 @@ const Home = ({basicUrl}) => {
                 >
                     <SwiperSlide>
                         <Card className='cardsMain'>
-                        <Card.Img variant="top" src="/img/mainItems/dodo.jpg" height="110px" />
+                        <Card.Img variant="top" src="/img/mainItems/perfume.jpg" style={{borderRadius:'5px'}}  height="100px" width="160px" />
                         <Card.Body className="p-2" >
-                            <Card.Title className="fs-8">Apple 에어팟 3세대</Card.Title>
+                            <Card.Title className="fs-8 text-truncate">바이레도 집시워터 오 드 퍼퓸</Card.Title>
+                            <Card.Title className="fs-8 text-truncate">269,280원</Card.Title>
                             <Card.Text style={{color:'#7DA79D'}}>
-                            #음악 #힐링
+                            #향수 #포근
                             </Card.Text>
                         </Card.Body>
                         </Card>
                     </SwiperSlide>
                     <SwiperSlide>
                         <Card className='cardsMain'>
-                        <Card.Img variant="top" src="/img/mainItems/dodo.jpg" height="110px" />
+                        <Card.Img variant="top" src="/img/mainItems/applewatch.jpg" style={{borderRadius:'5px'}}  height="100px" width="160px" />
                         <Card.Body className="p-2" >
-                            <Card.Title className="fs-8">Apple 에어팟 3세대</Card.Title>
+                            <Card.Title className="fs-8 text-truncate">Apple 2023 애플워치 SE 2세대</Card.Title>
+                            <Card.Title className="fs-8 text-truncate">329,000원</Card.Title>
                             <Card.Text style={{color:'#7DA79D'}}>
-                            #음악 #힐링
+                            #스마트워치 #패션
                             </Card.Text>
                         </Card.Body>
                         </Card>
                     </SwiperSlide>
                     <SwiperSlide>
                         <Card className='cardsMain'>
-                        <Card.Img variant="top" src="/img/mainItems/dodo.jpg" height="110px" />
+                        <Card.Img variant="top" src="/img/mainItems/coffee.jpg"  style={{borderRadius:'5px'}} height="100px" width="160px" />
                         <Card.Body className="p-2" >
-                            <Card.Title>Apple 에어팟 3세대</Card.Title>
+                        <Card.Title className="fs-8 text-truncate">캡슐 커피머신 돌체구스토</Card.Title>
+                        <Card.Title className="fs-8 text-truncate">89,900원</Card.Title>
                             <Card.Text style={{color:'#7DA79D'}}>
-                            #음악 #힐링
+                            #커피 #휴식
                             </Card.Text>
                         </Card.Body>
                         </Card>
                     </SwiperSlide>
                     <SwiperSlide>
                         <Card className='cardsMain'>
-                        <Card.Img variant="top" src="/img/mainItems/dodo.jpg" height="110px" />
+                        <Card.Img variant="top" src="/img/mainItems/marshall.jpg"  style={{borderRadius:'5px'}} height="100px" width="160px" />
                         <Card.Body className="p-2" >
-                            <Card.Title>Apple 에어팟 3세대</Card.Title>
-                            <Card.Text style={{color:'#7DA79D'}}>
-                            #음악 #힐링
-                            </Card.Text>
-                        </Card.Body>
-                        </Card>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Card className='cardsMain'>
-                        <Card.Img variant="top" src="/img/mainItems/dodo.jpg" height="110px" />
-                        <Card.Body className="p-2" >
-                            <Card.Title>Apple 에어팟 3세대</Card.Title>
+                        <Card.Title className="fs-8 text-truncate">마샬 스탠모어 III 무선 블루투스 스피커</Card.Title>
+                        <Card.Title className="fs-8 text-truncate">255,500원</Card.Title>
                             <Card.Text style={{color:'#7DA79D'}}>
                             #음악 #힐링
                             </Card.Text>
@@ -205,9 +186,8 @@ const Home = ({basicUrl}) => {
             </div>
         </div>
       </div>
+    <FooterNavbar></FooterNavbar>
 
-
-      <FooterNavbar></FooterNavbar>
     </div>
     
 

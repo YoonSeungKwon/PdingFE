@@ -12,6 +12,10 @@ import Signup from "./page/Signup";
 import WritePost from "./page/WritePost";
 import PropTypes from 'prop-types';
 import Home from "./page/Home";
+import Greenheader from './component/Greenheader';
+import PdingPage from "./page/PdingPage";
+import FooterNavbar from './component/FooterNavbar';
+import News from "./page/News";
 
 
 function App() {
@@ -28,8 +32,12 @@ function App() {
     }
   }, []);
 
+  const shouldRenderGreenheader = !['/Login', '/Signup', '/write', '/'].includes(window.location.pathname);
+
   return (
     <div >
+      {shouldRenderGreenheader && <Greenheader />}
+      {shouldRenderGreenheader && <FooterNavbar />}
       <Routes>
         <Route path="/" element={<Main basicUrl={basicUrl}/>}/>
         <Route path="/basket/:id" element={<Basket basicUrl={basicUrl}/>}/>
@@ -39,6 +47,8 @@ function App() {
         <Route path="/signUp" element={<Signup basicUrl={basicUrl}/>}/>
         <Route path="/write" element={<WritePost basicUrl={basicUrl}/>}/>
         <Route path="/home/:id" element={<Home basicUrl={basicUrl}/>}/>
+        <Route path="/pding/:id" element={<PdingPage basicUrl={basicUrl}/>}/>
+        <Route path="/news/:id" element={<News basicUrl={basicUrl}/>}/>
       </Routes>
      
     </div>

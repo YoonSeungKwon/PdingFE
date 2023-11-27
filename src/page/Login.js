@@ -7,20 +7,24 @@ const Login = ({basicUrl}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
-  // useEffect(()=>{
-  //   if(localStorage.getItem('acc_token'){
-  //     navigate("/")
-  //   })
-  // },[]) 토큰 있을 시 친구목록으로 리다이랙트
-
+  const [isFormFilled, setIsFormFilled] = useState(false);
+  
+  const gotoPreview = (e) =>{
+    navigate('/');
+  }
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    updateIsFormFilled();
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    updateIsFormFilled();
+  };
+
+  const updateIsFormFilled = () => {
+    setIsFormFilled(email.trim() !== '' && password.trim() !== '');
   };
 
   const loginning = (e) => {
@@ -33,12 +37,14 @@ const Login = ({basicUrl}) => {
     .then((response) => {
     // Handle success.
     // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-    console.log(response)
-    console.log('Well done!');
+    console.log(response);
+    
     localStorage.setItem('acc_token', response.headers.authorization); 
     localStorage.setItem('ref_token', response.headers.get("x-refresh-token")); 
-    
-    alert('안녕하세요 '+ response.data.name + ' 님!');
+    localStorage.setItem('userProfile', response.data.profile);
+    localStorage.setItem('userName', response.data.name);
+    localStorage.setItem('userEmail', email);
+      // alert('안녕하세요 '+ response.data.name + ' 님!');
 
     // navigate('/list/' + response.data.email);
     navigate('/home/' +response.data.email, {
@@ -62,22 +68,33 @@ const Login = ({basicUrl}) => {
   });
   }
 
-  
+
   return (
-    <form>
-      <div>
-        ID
-        <input type="text" id="email" value={email} autoComplete="username" autoFocus placeholder='아이디를 입력해주세요' onChange={handleEmailChange}/>
+    <div className='loginPage' style={{border:'1px solid black'}}>
+      <div className='myloginPage'>
+      <div className='loginText'>
+        <button className='btnclas' onClick={gotoPreview}>&lt;</button>
+        <div style={{float:'center', paddingTop:'4px', paddingRight:'30px'}}>로그인</div>
       </div>
       <div>
-      password
-      <input type="password" id="password" value={password} autoComplete="current-password" autoFocus placeholder='비밀번호를 입력해주세요' onChange={handlePasswordChange}/>
+        <div>
+          <input type="text"  className='input-info-box' id="email" value={email} autoComplete="username" autoFocus placeholder='아이디를 입력해주세요' onChange={handleEmailChange}/>
+        </div>
+        <div>
+        <input type="password" className='input-info-box' id="password" value={password} autoComplete="current-password" autoFocus placeholder='비밀번호를 입력해주세요' onChange={handlePasswordChange}/>
+        </div>
       </div>
-      <button type='submit' onClick={loginning} >로그인</button>
-      <h5><Link to='/Signup'>회원가입</Link></h5>
-    </form>
+      <div>
+        <button type='submit' className={`login-btn ${isFormFilled ? 'filled' : 'unfilled'}`} onClick={loginning} disabled={!isFormFilled} >로그인하기</button>
+      </div>
+      <div>
+      <h5 style={{ fontSize: 'medium', textAlign:'center', color:'grey'}}>비밀번호를 잊으셨나요? <Link className='signup_link' to='/Signup'>비밀번호 찾기</Link></h5>
+      </div>
+      </div>
+    </div>
     
-  )
+    
+  );
 }
 
 export default Login

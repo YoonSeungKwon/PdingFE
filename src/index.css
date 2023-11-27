@@ -9,8 +9,23 @@
 }
 
 @font-face {
+  font-family : 'HS_summer';
+  src : url(../public/font/HS_summer.TTF)
+}
+
+@font-face {
   font-family : 'pretendard-bold';
   src : url(../public/font/PRETENDARD-BOLD.OTF)
+}
+
+@font-face {
+  font-family : 'pretendard-medium';
+  src : url(../public/font/PRETENDARD-MEDIUM.OTF)
+}
+
+@font-face {
+  font-family : 'pretendard-semibold';
+  src : url(../public/font/PRETENDARD-SEMIBOLD.OTF)
 }
 
 
@@ -39,11 +54,8 @@ body {
 
 .full-screen{
   .Main{
-    /* display: flex; 가로 정렬로 바꿔버림 */
-    /* justify-content: center;    가로 가운데 정렬 */
-    /* align-items: center;    세로 가운데 정렬 */
-    /* flex-direction: column; 정렬을 세로로 */
-    /* border-color: black; */
+    position: relative;
+    z-index: 0;
     display: flex;
     justify-content: center; 
     align-items: center;   
@@ -58,12 +70,29 @@ body {
   background-position: bottom;
 }
 
+.signup_link{
+  color: #496D68;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.login-btn-main{
+  width: 398px;
+  height: 48px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  font-family : 'pretendard-regular';
+  margin-bottom: 1vh;
+  background-color: white;
+  color: black;
+}
+
 
 .mainText{
   color:white;
   font-family : 'pretendard-regular';
   font-family : 'omyu_pretty';
-  margin-bottom: 8vh;
+  margin-bottom: 10vh;
 }
 
 code {
@@ -77,17 +106,31 @@ header{
   top: 0;
   left: 0;
   right: 0;
-  height: 13%;
+  height: 109px;
 }
 
-.haeder-logo-image{
+.greenText{
+  color:white;
+  font-family: HS_summer;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+  align-items: center;
+  height: 56px;
+  display:flex;
+  justify-content: center;
+  padding-top: 1.5vh;
+}
+
+/* .haeder-logo-image{
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 40%; 
   height: auto; 
-}
+} */
 
 .main-items{
   
@@ -96,21 +139,38 @@ header{
 }
 
 .profile-mainment{
-  height: 14vh;
-  padding-top: 4vh;
+  height: 110px;
+  padding-top: 3vh;
   margin:0 2vh;
-  font-family: 'pretendard-regular';
-  font-size: 21px;
+  font-family: 'pretendard-semibold';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.profileBox{
+  width: 64px;
+  height:auto;
 }
 
 .gift-button-box{
-  height:15vh;
+  height:132px;
   background-color: #E7F6EF;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin:0 2vh;
+  margin-top: 1vh;
+  border-radius: 8px;
   
+}
+
+.wantedGift{
+  margin-top: 1vh;
+  font-family: pretendard-regular;
+  font-size: 20px;
+  color: #496D68;
 }
 
 footer{
@@ -119,6 +179,9 @@ footer{
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 2;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0px -8px 16px 0px rgba(0, 0, 0, 0.10);
   
 }
 
@@ -141,17 +204,14 @@ footer{
   color: white;
   border: none;
   border-radius: 100%;
-  width:7.5vh;
-  height:7.5vh;
-}
-
-.card-box-main{
-  
+  width:56px;
+  height:56px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.10);
 }
 
 .all-all-screen{
-  /* display: block;
-  overflow-y: auto; */
+  display: block;
+  overflow-y: auto;
   margin-top: 25%;
   margin-bottom: -20%; 
   height: 750px;
@@ -166,14 +226,21 @@ footer{
 .cardsMain{
   width:14rem;
   font-family: 'pretendard-regular';
+  position: relative;
+  z-index: 1;
+  border-color: white;
   
 }
 
 .mainGiftText{
   font-size: larger;
   margin-bottom: 1vh;
-  margin-top: 2vh;
-  font-family : 'pretendard-regular';
+  margin-top: 3vh;
+  font-family : 'pretendard-semibold';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .best-ten{
@@ -181,17 +248,134 @@ footer{
   
 }
 
+.marginbottonchange{
+  margin-bottom: 1vh;
+  font-family : 'pretendard-regular';
+  
+}
+
+
+/* 로그인 페이지 */
+.loginPage{
+  display: flex;
+  justify-content: center; 
+  align-items: center;   
+  flex-direction: column; 
+  height: 100vh;
+}
+
+.myloginPage{
+  padding-bottom: 100%;
+}
+
+.mysignupPage{
+  padding-bottom: 60%;
+  text-align: center;
+}
+
+.loginText{
+  margin-top: 53px;
+  height: 56px;
+  text-align:center;
+  width:100%;
+  align-items: center;
+  font-family : 'pretendard-medium';
+  font-size: x-large;
+  top: 0;
+  position: fixed;
+}
+
+.input-info-box{
+  width: 398px;
+  height: 56px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  background-color: white;
+  font-family : 'pretendard-regular';
+  margin-bottom: 1vh;
+  padding-left: 2vh;
+}
+
+.checking-box{
+  width: 84px;
+  height: 56px;
+  border-radius: 10px;
+  background-color: #496D68;
+  font-family : 'pretendard-regular';
+  color:white;
+  margin-bottom: 1vh;
+  margin-left: 1vh;
+  text-align: center;
+  flex: 1;
+}
+
 .login-btn{
   width: 398px;
   height: 48px;
   border: 1px solid grey;
   border-radius: 10px;
-  background-color: white;
   font-family : 'pretendard-regular';
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  background-color: #D0F0E3;
+  color: #ffffff;
+
+  &.filled {
+    background-color: #496D68; 
+  }
+
+  &.unfilled {
+    background-color: #D0F0E3;
+    opacity: 0.5; 
+  }
 }
 
-.marginbottonchange{
-  margin-bottom: 1vh;
+.btnclas{
+  border: 0;
+  background-color: transparent;
+  text-align: center;
+  flex: 1;
+  float:left;
+  margin-left: 2vh;
+  margin-right: -20vh;
+
+}
+
+/* 프딩 페이지 */
+
+.input-friend-box{
+  width: 398px;
+  height: 40px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  background-color: white;
   font-family : 'pretendard-regular';
-  
+  margin-bottom: 1vh;
+  padding-left: 2vh;
+  align-items: center;
+}
+
+.input-friend-btn{
+  position: absolute;
+  right: 3vh;
+  padding-top: 0.8vh;
+  border: 0;
+  background-color: transparent;
+}
+
+.pding-ment{
+  font-family : 'pretendard-medium';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.pding-subment{
+  font-family : 'pretendard-medium';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  margin-top: 1vh;
 }

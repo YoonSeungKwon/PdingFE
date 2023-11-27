@@ -8,24 +8,37 @@ const Signup = ({basicUrl}) => {
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState('');
   const [check, setCheck] = useState(false);
+  const [isFormFilled, setIsFormFilled] = useState(false);
   
   const navigate = useNavigate();
 
+  const gotoPreview = (e) =>{
+    navigate('/');
+  }
+
+  const updateIsFormFilled = () => {
+    setIsFormFilled(email.trim() !== '' && password.trim() !== '');
+  };
+
   const handleNameChange = (e) => {
     setName(e.target.value);
+    updateIsFormFilled();
   };
 
   const handleEmailChange = (e) => {
     setCheck(false);
     setEmail(e.target.value);
+    updateIsFormFilled();
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    updateIsFormFilled();
   };
 
   const handlePasswordCheckChange = (e) => {
     setPasswordCheck(e.target.value);
+    updateIsFormFilled();
   };
 
   const handleCheck = (e) =>{
@@ -79,45 +92,39 @@ const Signup = ({basicUrl}) => {
   };
   
   return (
-    <div>
-        <div>
-          <h3 id='signup_title'> 회원가입 (Signup) </h3>
+    <div className='loginPage' style={{border:'1px solid black'}}>
+      <div className='mysignupPage'>
+        <div className='loginText'>
+          <button className='btnclas' onClick={gotoPreview}>&lt;</button>
+          <div style={{float:'center', paddingTop:'4px', paddingRight:'30px'}}>회원가입</div>
         </div>
         <div className='Signup'>
           <div>
             <div id='signup_section'>
                 {/* 이름 */}
                 <div>
-                <h5> 이름 </h5>
-                <input type='text' maxLength='10' name='signup_name' onChange={handleNameChange}/>
+                <input type='text' className='input-info-box'  maxLength='10' name='signup_name' autoFocus placeholder='이름' onChange={handleNameChange}/>
                 </div>
             </div>
             {/* 이메일 */}
-            <div>
-              <h5> 이메일 </h5>
-              <input type='text' maxLength='15' name='signup_email' onChange={handleEmailChange}/> @
-              <select name='signup_email_select'>
-                <option value='gmail.com'> gmail.com </option>
-                <option value='naver.com'> naver.com </option>
-                <option value='write'> 직접 입력 </option>
-              </select>
-              <button onClick={handleCheck}>중복 체크</button>
+            <div >
+              <input type='text' className='input-info-box' style={{width:'306px'}}  maxLength='30' name='signup_email' autoFocus placeholder='이메일' onChange={handleEmailChange}/>
+              <button className='checking-box' onClick={handleCheck}>중복 체크</button>
             </div>
 
             {/* 비밀번호 */}
             <div>
-              <h5> 비밀번호 </h5>
-              <input type='password' maxLength='15' name='signup_password' onChange={handlePasswordChange}/>
+              <input type='password' className='input-info-box'  maxLength='15' name='signup_password' autoFocus placeholder='비밀번호' onChange={handlePasswordChange}/>
             </div>
             <div>
-              <h5> 비밀번호 확인 </h5>
-              <input type='password' maxLength='15' name='signup_pswCheck' onChange={handlePasswordCheckChange}/>
+              <input type='password' className='input-info-box'  maxLength='15' name='signup_pswCheck' autoFocus placeholder='비밀번호 확인' onChange={handlePasswordCheckChange}/>
             </div>
           </div>
         </div>
 
         <div>
-          <input type='button' value='가입하기' name='sigunup_submit'onClick={register} disabled={!(name && email && password && password === passwordCheck)}/>
+          <input type='button' value='가입하기' name='sigunup_submit' className={`login-btn ${isFormFilled ? 'filled' : 'unfilled'}`} onClick={register}  disabled={!isFormFilled}/>
+        </div>
         </div>
       </div>
   )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect }  from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import KakaoLogin from 'react-kakao-login';
 import axios from 'axios';
 import FooterNavbar from '../component/FooterNavbar';
@@ -75,7 +75,8 @@ const Main = ({basicUrl}) => {
               onSuccess={handleSuccess}
               onFail={handleFailure}
             /></div>
-            <div><button className="login-btn" style={{borderRadius:'3px'}} onClick={joinMembership}>이메일로 로그인하기</button></div>
+            <div><button className="login-btn-main" style={{borderRadius:'3px'}} onClick={joinMembership}>이메일로 로그인하기</button></div>
+            <div><h5 style={{ fontSize: 'medium', textAlign:'center', color:'grey'}}>프딩이 처음이신가요? <Link className='signup_link' to='/Signup'>회원가입</Link></h5></div>
           </div>
       )}
       

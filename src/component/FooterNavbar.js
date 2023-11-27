@@ -7,7 +7,7 @@ import PressedAlarm from '../img/navbar/PressedAlarm.png';
 import Mine from '../img/navbar/Mine.png';
 import PressedMine from '../img/navbar/PressedMine.png';
 
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const FooterNavbar = () => {
@@ -16,64 +16,67 @@ const FooterNavbar = () => {
     const [alarm, setAlarm] = useState(false);
     const [mine, setMine] = useState(false);
     const navigate = useNavigate();
+    const userEmail = localStorage.getItem('userEmail');
 
-    const handleHome = () =>{
-        setHome(true);
+    const resetState = () => {
+        setHome(false);
         setPding(false);
         setAlarm(false);
         setMine(false);
-        navigate('/');
-    }
+      };
 
-    const handlePding = () =>{
-        setHome(false);
-        setPding(true);
-        setAlarm(false);
-        setMine(false);
-        navigate('/');
-    }
-    const handleAlarm = (email, oauth) =>{
-        setHome(false);
-        setPding(false);
-        setAlarm(true);
-        setMine(false);
-        navigate('/basket/'+email, {state:[email,oauth]})
-    }
-    const handleMine = () =>{
-        setHome(false);
-        setPding(false);
-        setAlarm(false);
-        setMine(true);
-        navigate('/');
-    }
+      const handleNavigation = (path, stateUpdater) => {
+        resetState();
+        stateUpdater(true);
+        navigate(path + userEmail);
+      };
+    
+      const handleHome = () => {
+        handleNavigation('/home/', setHome);
+      };
+    
+      const handlePding = () => {
+        handleNavigation('/pding/', setPding);
+      };
+    
+      const handleAlarm = () => {
+        handleNavigation('/news/', setAlarm);
+      };
+    
+      const handleMine = (userEmail) => {
+        resetState();
+        navigate('/basket/' + userEmail, {state:[userEmail,true]});
+      };
+    
 
   return (
     <footer style={{ height:'8%', backgroundColor:'white'}}>
             <div className='icons' onClick={handleHome}>
                 <img src={home? PressedHome : Home }alt="icon" style={{width:'25%'}}/>
-                <p style={home ? { fontWeight:'bold' } : { color: 'black' }}>
+                <p style={home ? { color:'#496D68' } : { color: 'grey' }}>
                     홈
                 </p>
             </div>
             <div className='icons' onClick={handlePding}>
                 <img src={pding? PressedPding : Pding }alt="icon"style={{width:'25%'}}/>
-                <p style={pding ? { fontWeight:'bold' } : { color: 'black' }}>
+                <p style={pding ? { color:'#496D68' } : { color: 'grey' }}>
                     친구
                 </p>
             </div>
             <div className='icons' onClick={handleAlarm}>
                 <img src={alarm? PressedAlarm : Alarm }alt="icon"style={{width:'25%'}}/>
-                <p style={alarm ? { fontWeight:'bold' } : { color: 'black' }}>
+                <p style={alarm ? { color:'#496D68' } : { color: 'grey' }}>
                     알림
                 </p>
             </div>
             <div className='icons' onClick={handleMine} style={{ float:'left'}}>
                 <img src={mine? PressedMine : Mine }alt="icon"style={{width:'25%'}}/>
-                <p style={mine ? { fontWeight:'bold' } : { color: 'black' }}>
+                <p style={mine ? { color:'#496D68' } : { color: 'grey' }}>
                     MY
                 </p>
             </div>
     </footer>
+    
   )
 }
 

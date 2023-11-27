@@ -9,6 +9,8 @@ import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './modules';
 import TokenRefresher from './component/TokenRefresher';
+import FooterNavbar from './component/FooterNavbar';
+import Greenheader from './component/Greenheader';
 
 
 
@@ -16,19 +18,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <TokenRefresher/> 
+    
     <App />
   </BrowserRouter>,
 );
-
-// const store = createStore(rootReducer, composeWithDevTools());
-
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <BrowserRouter>
-//       <App />
-//     </BrowserRouter>
-//   {/* </Provider>, */}
-//   document.getElementById('root'),
-// );
-
-// reportWebVitals();
