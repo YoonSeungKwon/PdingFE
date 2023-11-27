@@ -29,7 +29,7 @@ const WritePost = ({basicUrl}) => {
     formData.append("dto",new Blob([JSON.stringify(data)], {type:'application/json'}))
     console.log(formData)
 
-    axios.post({basicUrl} + '/api/v1/test@test.com/social=false/projects/', formData, {
+    axios.post(basicUrl + '/api/v1/test@test.com/social=false/projects/', formData, {
       headers: {'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>'},
     }
     ).then((res)=>{

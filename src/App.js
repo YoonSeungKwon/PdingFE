@@ -21,7 +21,7 @@ import News from "./page/News";
 function App() {
 
   const basicUrl = 'http://13.209.154.183:8080';
-  const localUrl = 'http://localhost:8080';
+  // const localUrl = 'http://localhost:8080';
 
   useEffect(() => {
     // 로컬 스토리지에서 토큰 가져오기
@@ -32,7 +32,7 @@ function App() {
     }
   }, []);
 
-  const shouldRenderGreenheader = !['/Login', '/Signup', '/write', '/'].includes(window.location.pathname);
+  const shouldRenderGreenheader = !['/login', '/Signup', '/write', '/'].includes(window.location.pathname);
 
   return (
     <div >

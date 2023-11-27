@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 
@@ -15,20 +15,17 @@ export default function TokenRefresher(){
 
             return req;
         }, (error)=>{
-            console.log(error)
+            return Promise.reject(error);
         })
 
 
         axios.interceptors.response.use(
-            (res) => res,
-            async (error) => {
-            if(error.response.status !== 401){
-                console.log(error)
-            }
-            else if(error.response.data.status === 'ACCESS_TOKEN_EXPIRED'){
-                console.log('ACCESS_TOKEN_EXPIRED');
-                const token = localStorage.getItem('ref_token');
-                await axios.get("http://13.209.154.183:8080/api/v1/", {headers:{
+            (res) => {return res},
+                async (error) => {
+                   if(error.response.data.status === 'ACCESS_TOKEN_EXPIRED'){
+                        console.log('ACCESS_TOKEN_EXPIRED');
+                        const token = localStorage.getItem('ref_token');
+                        await axios.get("http://13.209.154.183:8080/api/v1/", {headers:{
                     'X-Refresh-Token': 'Bearer ' + token
                 }}).then((response)=>{
                     const acc_token = response.headers.get('Authorization');
@@ -45,8 +42,7 @@ export default function TokenRefresher(){
                 navigate("/login")
             }
             else{
-                console.log('401');
-                Promise.reject(error);
+                return Promise.reject(error);
         }})
 
         },[]);

@@ -8,7 +8,7 @@ import Mine from '../img/navbar/Mine.png';
 import PressedMine from '../img/navbar/PressedMine.png';
 
 import { useState , useEffect} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const FooterNavbar = () => {
     const [home, setHome] = useState(false);
@@ -16,7 +16,16 @@ const FooterNavbar = () => {
     const [alarm, setAlarm] = useState(false);
     const [mine, setMine] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
     const userEmail = localStorage.getItem('userEmail');
+
+    useEffect(() => {
+      const pathname = location.pathname;
+      setHome(pathname === '/home/' + userEmail);
+      setPding(pathname === '/pding/' + userEmail);
+      setAlarm(pathname === '/news/' + userEmail);
+      setMine(pathname === '/basket/' + userEmail);
+    }, [location.pathname, userEmail]);
 
     const resetState = () => {
         setHome(false);

@@ -379,3 +379,68 @@ footer{
   line-height: 22px;
   margin-top: 1vh;
 }
+
+
+/* 알림창 메뉴 */
+
+.newsBox{
+  height: 48px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+.submenu-news{
+  width: 215px;
+  height: 48px;
+  text-align: center;
+  flex: 1;
+  padding-top: 1.5vh;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid grey;
+  font-family : 'pretendard-medium';
+}
+
+.submenu-news.active {
+  border-bottom: 2px solid #496D68;
+  color: #496D68; /* You can also change the text color if needed */
+}
+
+.newsName{
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-family : 'pretendard-medium';
+}
+
+.newsButton{
+  background-color: transparent;
+  border: 0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  font-family : 'pretendard-regular';
+  padding-right: 2vh;
+}
+
+.hoursAgo{
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  color: #7b7b7b;
+}
+
+.PartFund{
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  font-family : 'pretendard-regular';
+}
