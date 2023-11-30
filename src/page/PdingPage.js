@@ -65,14 +65,19 @@ const FriendsList = ({basicUrl}) => {
     + '시 ' + Math.floor((((temp.getTime() - now.getTime()) % (1000*60*60*24)) % (1000*60*60)) / (1000 * 60)) + '분';
   }
 
+  const formatEndDate = (endDateString) => {
+    const formattedDate = endDateString.split('T')[0];
+    return formattedDate;
+  }
+
 
   return (
     <>
       <div className="full-screen all-all-screen">
         <Greenheader></Greenheader>
-          <div className='wantedFix' style={{ position: 'fixed',  width: '100%' }} >
+          <div className='wantedFix' style={{  width: '100%' }} >
             {/* <div style={{position: 'fixed'}}> */}
-            <div style={{position:'relative',textAlign: 'center', paddingTop:'2vh'}}>
+            <div style={{position:'relative',textAlign: 'center', paddingTop:'3vh'}}>
                 <input className='input-friend-box'
                 value={searchEamil}
                 onChange={handleEmailChange}
@@ -96,33 +101,31 @@ search
             </div>
       </div>
 
-            < div className='category_wrap all-screen' style={{margin:'0px auto', marginTop:'50px', marginLeft:'200px',marginTop: '100px' }}>
-              {project.map((idx)=>(
-                <>
-                <Card className='cardsMain' key={idx.img}>
-                <Card.Img variant="top" src={idx.img}  height="100px" width="160px" />
-                <Card.Body className="p-2 border-0" >
-                    <Card.Title className="fs-8  text-truncate">{idx.title}</Card.Title>
-                    <Card.Title className="fs-8">235,690원</Card.Title>
-                    <Card.Text style={{color:'#7DA79D'}}>
-                    #음악 #힐링
+          <div className='category_wrap pding-all-category-screen' style={{ margin: '0px auto', marginTop: '100px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+            {project.map((idx) => (
+              <Card className='cardsMain' key={idx.img} onClick={() => handleProductPage(idx.idx)} style={{ width: '45%', marginBottom: '20px' }}>
+                <Card.Img variant="top" src={idx.img} height="100px" width="160px" />
+                <Card.Body className="p-2 border-0">
+                  <Card.Title className="fs-8"><img width={'24px'} src={idx.profile}></img>{idx.writer}</Card.Title>
+                  <Card.Title className="fs-8 text-truncate">{idx.title}</Card.Title>
+                  <div style={{textAlign:'center',display:'flex', justifyContent:'center'}}>
+                    <Card.Text style={{ color: '#7DA79D', fontSize:'12px', padding:'0 0.2vh',display:'flex', alignItems:'center'}}>
+                      <div style={{marginRight:'0.1vh'}}><img src={'/img/gift-friend.png'} width={'12px'}></img></div>
+                      {(idx.curr * 100) / idx.goal}%
                     </Card.Text>
+                    <Card.Text style={{ color: '#7b7b7b', fontSize:'12px', padding:'0 0.2vh',display:'flex' , alignItems:'center' }}>
+                      <div style={{marginRight:'0.1vh'}}><img src={'/img/profile-2user.png'} width={'12px'}></img></div>
+                      {idx.idx}명
+                    </Card.Text>
+                    <Card.Text style={{ color: '#7b7b7b', fontSize:'12px', padding:'0 0.2vh',display:'flex' , alignItems:'center'}}>
+                      <div style={{marginRight:'0.1vh'}}><img src={'/img/calendar-friend.png'} width={'12px'}></img></div>
+                      {formatEndDate(idx.enddate)}
+                    </Card.Text>
+                  </div>
                 </Card.Body>
-                </Card>
-
-                {/* <div key={idx.img} style={{border:'1px solid black', width:'200px', height:'200px', textAlign:'center', marginTop:'20px', marginLeft:'100px', float:'left'}}> */}
-                  {/* <h2 style={{marginTop:'20px'}}>{idx.title}</h2> */}
-                  {/* <div><img src={idx.img}  style={{width:'200px'}}/></div> */}
-                  {/* <h4>{(idx.curr*100) / idx.goal}%</h4> */}
-                  {/* <h4>{handleDate(idx.enddate)}</h4> */}
-                  {/* <input value={pay} onChange={e=>setPay(e.target.value)} type='number' />:금액 */}
-                  {/* <button onClick={()=>handleProductPage(idx.idx)}>보기</button> */}
-                {/* </div>  */}
-
-                </>
-              ))}
+              </Card>
+            ))}
           </div>
-            
             
           <FooterNavbar></FooterNavbar>
       </div>

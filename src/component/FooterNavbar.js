@@ -69,7 +69,7 @@ const FooterNavbar = () => {
             <div className='icons' onClick={handlePding}>
                 <img src={pding? PressedPding : Pding }alt="icon"style={{width:'25%'}}/>
                 <p style={pding ? { color:'#496D68' } : { color: 'grey' }}>
-                    친구
+                    프딩
                 </p>
             </div>
             <div className='icons' onClick={handleAlarm}>
