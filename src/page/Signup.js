@@ -43,7 +43,7 @@ const Signup = ({basicUrl}) => {
 
   const handleCheck = (e) =>{
     if(email){
-      axios.get({basicUrl} + '/api/v1/members/check/'+email
+      axios.get(basicUrl + '/api/v1/members/check/'+email
       ).then((res)=>{
         console.log(res);
         if(res.data){
@@ -64,7 +64,7 @@ const Signup = ({basicUrl}) => {
     if (name && email && password && password === passwordCheck) {
       if(check){
         axios
-        .post( {basicUrl} + '/api/v1/members/', {
+        .post( basicUrl + '/api/v1/members/', {
           name: name,
           email: email,
           password: password,

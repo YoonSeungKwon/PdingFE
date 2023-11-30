@@ -61,7 +61,6 @@ const Main = ({basicUrl}) => {
     <div className={`Main ${showBackground ? 'show-background' : ''}`} style={{border:'1px solid black'}}>
       <div style={{ textAlign: 'center', marginTop:'-150px'}}>
         <div><img className="MainLogo" style={{width: logoSize +'px'}} src={logoImage} /></div>
-        
       </div>
       {showButtons && (
           <div style={{ textAlign: 'center' }}>
@@ -69,12 +68,14 @@ const Main = ({basicUrl}) => {
             '프딩'은 원하는 선물을 등록하면<br></br>
             친구들이 금액을 채워주는 크라우드 펀딩 형태의<br></br>
             모바일 중점 웹 서비스입니다.
-          </div>
+            </div>
             <div className='marginbottonchange'><KakaoLogin
               token={appKey}
               onSuccess={handleSuccess}
               onFail={handleFailure}
-            /></div>
+              style={{background:'#ffffff', border:'0px'}}
+            ><img src='/img/kakao_login_large_wide.png' style={{width:'45vh', height:'48px'}}></img></KakaoLogin>
+            </div>
             <div><button className="login-btn-main" style={{borderRadius:'3px'}} onClick={joinMembership}>이메일로 로그인하기</button></div>
             <div><h5 style={{ fontSize: 'medium', textAlign:'center', color:'grey'}}>프딩이 처음이신가요? <Link className='signup_link' to='/Signup'>회원가입</Link></h5></div>
           </div>

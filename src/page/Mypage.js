@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate,useLocation } from 'react-router-dom';
 import FooterNavbar from '../component/FooterNavbar';
 import Greenheader from '../component/Greenheader';
-import Card from 'react-bootstrap/Card';
 
 
 const FriendsList = ({basicUrl}) => {
@@ -14,11 +13,13 @@ const FriendsList = ({basicUrl}) => {
   const [searchFriends, setSearchFriends] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("전체");
   const [project, setProject] = useState([]);
+  const oauth = localStorage.getItem('oauth');
+  const userEmail = localStorage.getItem('userEmail');
   const now = new Date();
 
   
   useEffect(()=>{
-    axios.get(basicUrl + '/api/v1/projects/friends'
+    axios.get(basicUrl + '/api/v1/' + userEmail + '/social=' + oauth + '/projects/'
     ).then((res)=>{
       const list = res.data;
       console.log(list);
@@ -96,30 +97,16 @@ search
             </div>
       </div>
 
-            < div className='category_wrap all-screen' style={{margin:'0px auto', marginTop:'50px', marginLeft:'200px',marginTop: '100px' }}>
+            <div className='category_wrap all-screen' style={{margin:'0px auto', marginTop:'50px', marginLeft:'200px',marginTop: '100px' }}>
               {project.map((idx)=>(
-                <>
-                <Card className='cardsMain' key={idx.img}>
-                <Card.Img variant="top" src={idx.img}  height="100px" width="160px" />
-                <Card.Body className="p-2 border-0" >
-                    <Card.Title className="fs-8  text-truncate">{idx.title}</Card.Title>
-                    <Card.Title className="fs-8">235,690원</Card.Title>
-                    <Card.Text style={{color:'#7DA79D'}}>
-                    #음악 #힐링
-                    </Card.Text>
-                </Card.Body>
-                </Card>
-
-                {/* <div key={idx.img} style={{border:'1px solid black', width:'200px', height:'200px', textAlign:'center', marginTop:'20px', marginLeft:'100px', float:'left'}}> */}
-                  {/* <h2 style={{marginTop:'20px'}}>{idx.title}</h2> */}
-                  {/* <div><img src={idx.img}  style={{width:'200px'}}/></div> */}
-                  {/* <h4>{(idx.curr*100) / idx.goal}%</h4> */}
-                  {/* <h4>{handleDate(idx.enddate)}</h4> */}
+                <div key={idx.img} style={{border:'1px solid black', width:'200px', height:'200px', textAlign:'center', marginTop:'20px', marginLeft:'100px', float:'left'}}>
+                  <h2 style={{marginTop:'20px'}}>{idx.title}</h2>
+                  <div><img src={idx.img}  style={{width:'200px'}}/></div>
+                  <h4>{(idx.curr*100) / idx.goal}%</h4>
+                  <h4>{handleDate(idx.enddate)}</h4>
                   {/* <input value={pay} onChange={e=>setPay(e.target.value)} type='number' />:금액 */}
-                  {/* <button onClick={()=>handleProductPage(idx.idx)}>보기</button> */}
-                {/* </div>  */}
-
-                </>
+                  <button onClick={()=>handleProductPage(idx.idx)}>보기</button>
+                </div>  
               ))}
           </div>
             

@@ -92,6 +92,18 @@ const FriendsList = ({basicUrl}) => {
     })
    }
 
+   const handleTime = (regdate) => {
+    const temp = new Date(regdate.substr(0, 10)+' '+regdate.substr(11, 8))
+    const now = new Date();
+    console.log(temp)
+    if (Math.floor((now.getTime() - temp.getTime()) / (1000*60*60*24)) > 0 )
+      return Math.floor((now.getTime() - temp.getTime()) / (1000*60*60*24)) + '일 전'
+    else if(parseInt(Math.floor((now.getTime() - temp.getTime()) % (1000*60*60*24)))/(1000*60*60) > 0)
+      return parseInt(Math.floor((now.getTime() - temp.getTime()) % (1000*60*60*24))/(1000*60*60)) + '시간 전'
+    else
+      return parseInt(Math.floor((now.getTime() - temp.getTime()) % (1000*60*60*24))%(1000*60*60))/(1000*60) + 1 + '분 전'
+  }
+
   return (
     <>
       <div className="full-screen all-all-screen">
@@ -136,8 +148,9 @@ const FriendsList = ({basicUrl}) => {
               <div key={idx.email} style={{display:'flex', textAlign:'center',alignItems:'center', height:'88px'}}>
                   <div style={{paddingLeft:'2vh'}}><img src={idx.profile} alt={idx.email} width='64px' height='64px'/></div>
                   <div style={{paddingLeft:'2vh', paddingTop:'1vh'}}>
-                    <span className='newsName'>{idx.name}   </span>
-                    <p className='hoursAgo'>몇시간 전</p>
+                    <div className='newsName' style={{float:'left'}}>{idx.name}  </div>
+                    <br/>
+                    <div className='hoursAgo' style={{float:'left'}}>{handleTime(idx.regdate)}</div>
                   </div>
                   <div style={{marginLeft: 'auto'}}>
                     <button className='newsButton' style={{color:'#7b7b7b'}} onClick={() =>handleFriendDecline(idx, idx.email, idx.oauth)}>거절하기</button>

@@ -43,6 +43,7 @@ const Login = ({basicUrl}) => {
     localStorage.setItem('ref_token', response.headers.get("x-refresh-token")); 
     localStorage.setItem('userProfile', response.data.profile);
     localStorage.setItem('userName', response.data.name);
+    localStorage.setItem('oauth', response.data.oauth);
     localStorage.setItem('userEmail', email);
       // alert('안녕하세요 '+ response.data.name + ' 님!');
 
@@ -70,12 +71,12 @@ const Login = ({basicUrl}) => {
 
 
   return (
-    <div className='loginPage' style={{border:'1px solid black'}}>
+    <div className='loginPage'>
       <div className='myloginPage'>
       <div className='loginText'>
-        <button className='btnclas' onClick={gotoPreview}>&lt;</button>
-        <div style={{float:'center', paddingTop:'4px', paddingRight:'30px'}}>로그인</div>
-      </div>
+          <button className='btnclas' onClick={gotoPreview}>&lt;</button>
+          <div style={{float:'center', marginTop:'5px'}}>로그인</div>
+        </div>
       <div>
         <div>
           <input type="text"  className='input-info-box' id="email" value={email} autoComplete="username" autoFocus placeholder='아이디를 입력해주세요' onChange={handleEmailChange}/>
@@ -86,9 +87,9 @@ const Login = ({basicUrl}) => {
       </div>
       <div>
         <button type='submit' className={`login-btn ${isFormFilled ? 'filled' : 'unfilled'}`} onClick={loginning} disabled={!isFormFilled} >로그인하기</button>
-      </div>
-      <div>
-      <h5 style={{ fontSize: 'medium', textAlign:'center', color:'grey'}}>비밀번호를 잊으셨나요? <Link className='signup_link' to='/Signup'>비밀번호 찾기</Link></h5>
+        </div>
+        <div>
+        <h5 style={{ fontSize: 'medium', textAlign:'center', color:'grey'}}>비밀번호를 잊으셨나요? <Link className='signup_link' to='/Signup'>비밀번호 찾기</Link></h5>
       </div>
       </div>
     </div>

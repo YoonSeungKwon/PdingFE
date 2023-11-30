@@ -16,6 +16,7 @@ import Greenheader from './component/Greenheader';
 import PdingPage from "./page/PdingPage";
 import FooterNavbar from './component/FooterNavbar';
 import News from "./page/News";
+import Mypage from "./page/Mypage";
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
     }
   }, []);
 
-  const shouldRenderGreenheader = !['/login', '/Signup', '/write', '/'].includes(window.location.pathname);
+  const shouldRenderGreenheader = !['/login', '/Signup',  '/'].includes(window.location.pathname);
 
   return (
     <div >
@@ -49,6 +50,7 @@ function App() {
         <Route path="/home/:id" element={<Home basicUrl={basicUrl}/>}/>
         <Route path="/pding/:id" element={<PdingPage basicUrl={basicUrl}/>}/>
         <Route path="/news/:id" element={<News basicUrl={basicUrl}/>}/>
+        <Route path="/mypage/:id" element={<News basicUrl={basicUrl}/>}/>
       </Routes>
      
     </div>
