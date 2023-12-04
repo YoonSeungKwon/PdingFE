@@ -13,21 +13,36 @@ const FriendsList = ({basicUrl}) => {
   const [searchEamil, setSearchEamil] = useState("");
   const [searchFriends, setSearchFriends] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("전체");
+  const [selectedButton, setSelectedButton] = useState("전체");
   const [project, setProject] = useState([]);
   const now = new Date();
 
+
+  useEffect(() => {
+    fetchData(selectedCategory);
+  }, [selectedCategory]);
   
-  useEffect(()=>{
-    axios.get(basicUrl + '/api/v1/projects/friends'
-    ).then((res)=>{
-      const list = res.data;
-      console.log(list);
-      setProject(list);
-    }).catch((error)=>{
-      console.log(error);
-      setProject([]);
-    })
-  }, []);
+  const fetchData = (category) => {
+    axios.get(basicUrl + `/api/v1/projects/friends`)
+      .then((res) => {
+        const list = res.data;
+        
+        setProject(list);
+        console.log(list);
+        setSelectedCategory(category);
+        setSelectedButton(category);
+
+        setProject(prevProject => {
+          return category === '전체' ? list : list.filter(item => item.category === category);
+        });
+  
+        localStorage.setItem('idxUser', list.idx);
+      })
+      .catch((error) => {
+        console.log(error);
+        setProject([]);
+      });
+  };
   
   const handleEmailChange = (e) =>{
     setSearchEamil(e.target.value);
@@ -36,9 +51,19 @@ const FriendsList = ({basicUrl}) => {
     navigate('/details/'+idx, {state:[state[0],state[1], idx]});
   }
 
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-  };
+  // const handleCategoryChange = (category) => {
+  //   setSelectedCategory(category);
+  //   setSelectedButton(category);
+  //   const filteredProjects = category === '전체' ? project : project.filter(item => item.category === category);
+
+  //   setProject(filteredProjects);
+  //   fetchData(project);
+  //   console.log(filteredProjects);
+
+    
+  // };
+
+  
   const handleSearch = (e) =>{
     axios.get(basicUrl + '/api/v1/members/'+searchEamil
     ).then((res)=>{
@@ -94,20 +119,19 @@ search
             </div>
             <br/>
             <div  style={{textAlign:'center',display:'flex', paddingBottom:'2vh', marginLeft:'2vh'}}>
-              <button className='category-btn'>전체</button>
-              <button className='category-btn'>생일</button>
-              <button className={`category-btn ${selectedCategory === "졸업" ? "selected" : ""}`}
-              onClick={() => handleCategoryChange("졸업")}>졸업</button>
+              <button className={`category-btn ${selectedButton === '전체' ? 'selected' : ''}`} onClick={() => fetchData('전체')}>전체</button>
+              <button className={`category-btn ${selectedButton === '생일' ? 'selected' : ''}`} onClick={() => fetchData('생일')}>생일</button>
+              <button className={`category-btn ${selectedButton === '졸업' ? 'selected' : ''}`} onClick={() => fetchData('졸업')}>졸업</button>
             </div>
       </div>
 
           <div className='category_wrap pding-all-category-screen' style={{ margin: '0px auto', marginTop: '100px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
             {project.map((idx) => (
-              <Card className='cardsMain' key={idx.img} onClick={() => handleProductPage(idx.idx)} style={{ width: '45%', marginBottom: '20px' }}>
+              <Card className='cardsMain cardsShadow' key={idx.img} onClick={()=>handleProductPage(idx.idx)} style={{ width: '45%', marginBottom: '20px' }}>
                 <Card.Img variant="top" src={idx.img} height="100px" width="160px" />
                 <Card.Body className="p-2 border-0">
                   <Card.Title className="fs-8"><img width={'24px'} src={idx.profile}></img>{idx.writer}</Card.Title>
-                  <Card.Title className="fs-8 text-truncate">{idx.title}</Card.Title>
+                  <Card.Title className="fs-8 " style={{fontSize:'14px', fontWeight:'500', fontFamily:'pretendard-medium'}}>{idx.title}</Card.Title>
                   <div style={{textAlign:'center',display:'flex', justifyContent:'center'}}>
                     <Card.Text style={{ color: '#7DA79D', fontSize:'12px', padding:'0 0.2vh',display:'flex', alignItems:'center'}}>
                       <div style={{marginRight:'0.1vh'}}><img src={'/img/gift-friend.png'} width={'12px'}></img></div>

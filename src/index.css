@@ -190,6 +190,10 @@ footer{
   
 }
 
+.cardsShadow{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.10), 0 6px 6px rgba(0,0,0,0.10);
+}
+
 .icons{
   text-align: center;
   flex: 1;
@@ -217,7 +221,7 @@ footer{
 .all-all-screen{
   display: block;
   overflow-y: auto;
-  margin-top: 15vh;
+  margin-top: 13vh;
   margin-bottom: -20%; 
   height: 100%;
   padding-bottom: 10vh;
@@ -228,7 +232,6 @@ footer{
   width: 100%;
   z-index: 2;
   background-color: white;
-  margin-top: -3.5vh;
   margin-bottom: -3vh;
 
 
@@ -236,6 +239,9 @@ footer{
 
 .all-screen{
   width:100%;
+  position: fixed;
+  z-index: 2;
+  /* top:-3vh; */
 }
 
 .pding-all-category-screen{
@@ -422,6 +428,12 @@ footer{
   border-color: #7b7b7b;
 }
 
+.selected{
+  background-color: #D0F0E3;
+  border-style: none;
+  color:#496D68;
+}
+
 /* .category_wrap{
 
 } */
@@ -430,10 +442,10 @@ footer{
 /* 알림창 메뉴 */
 
 .newsBox{
-  height: 48px;
   text-align: center;
   display: flex;
   justify-content: space-between;
+  width:100%;
 }
 .submenu-news{
   width: 215px;
@@ -574,3 +586,94 @@ footer{
   background: var(--Primary200, #D0F0E3);
 }
 
+/* 마이 페이지 */
+.mypageProfile{
+  height: 27vh;
+  top:109px;
+  width:100%;
+}
+
+.all-mypage-screen{
+  display: block;
+  overflow-y: auto;
+  margin-top: 109px;
+  height: 100%;
+  padding-bottom: 10vh;
+}
+
+.mypageProfileBox{
+  width: 10vh;
+  height:10vh;
+  border: 1px solid #dddddd;
+  border-radius: 45px;
+  margin-top: 2vh;
+}
+
+.mypageWriteButton{
+  font-size: 30px;
+  background-color: #496D68;
+  color: white;
+  border: none;
+  border-radius: 100%;
+  width:4vh;
+  height:4vh;
+}
+
+.mypageMenu{
+
+}
+
+.mypageMenuText{
+  /* margin-bottom: 1vh;
+  margin-top: 3vh; */
+  
+  font-family : 'pretendard-semibold';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-bottom: 1px solid #00000038;
+  padding-left: 2vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+
+.imgclas{
+  border: 0;
+  background-color: transparent;
+  flex: 1;
+  margin-left: auto;
+  float: right;
+  margin-right: 2vh;
+}
+
+.mypageHeaderimg{
+  border: 0;
+  background-color: transparent;
+  flex: 1;
+  margin-left: auto;
+  float: left;
+}
+
+.mypageheadertxt{
+  /* margin-bottom: 1vh;
+  margin-top: 3vh; */
+  width: 100%;
+  font-family : 'pretendard-medium';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  padding: 1vh 2vh;
+  text-align: center;
+  padding-bottom: 1.5vh;
+}
+
+.mypageHeader{
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 109px;
+}

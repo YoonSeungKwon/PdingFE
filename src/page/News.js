@@ -15,17 +15,9 @@ const FriendsList = ({basicUrl}) => {
   const [myNews, setMyNews] = useState(true);
   const [myFriendsreq, setMyFriendsreq] = useState(false);
 
-  
-  useEffect(() => {
-    {myNews && (
-      <div>
-        {/* Content for 내 소식 */} 내소식나올거임
-      </div>
-    )}
-  }, [myNews]);
+
 
   useEffect(() => {
-    // myFriendsreq이 변경될 때마다 실행되는 코드
     if (myFriendsreq) {
       axios.get(basicUrl + '/api/v1/friends/').then((res) => {
         console.log(res);
@@ -108,8 +100,8 @@ const FriendsList = ({basicUrl}) => {
     <>
       <div className="full-screen all-all-screen">
         <Greenheader></Greenheader>
-          <div className='all-screen' >
-            <div className='newsBox' >
+          <div className='all-screen' style={{position: 'relative'}} >
+            <div className='newsBox' style={{textAlign:'center', display:'flex'}}>
               <div className={`submenu-news${myNews ? ' active' : ''}`} onClick={handleMyNews}>
                   <p style={myNews ? { color:'#496D68' } : { color: 'grey' }}>
                       내 소식

@@ -8,9 +8,12 @@ const ProductDetail = ({basicUrl}) => {
   const [now, setNow] = useState(new Date());
   const [cost, setCost] = useState(0);
   const [details, setDetails] = useState();
+  const idxUser = localStorage.getItem('idxUser');
+  const userEmail = localStorage.getItem('userEmail');
+  const oauth = localStorage.getItem('oauth');
 
   useEffect(()=>{
-    axios.get(basicUrl + '/api/v1/' + state[0] + '/social=' + state[1] + '/projects/' + state[2]
+    axios.get(basicUrl + '/api/v1/' + userEmail + '/social=' + oauth + '/projects/' + idxUser
     ).then((res)=>{
       console.log(res);
       setDetails(res.data);

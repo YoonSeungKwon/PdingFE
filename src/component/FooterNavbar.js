@@ -24,7 +24,7 @@ const FooterNavbar = () => {
       setHome(pathname === '/home/' + userEmail);
       setPding(pathname === '/pding/' + userEmail);
       setAlarm(pathname === '/news/' + userEmail);
-      setMine(pathname === '/basket/' + userEmail);
+      setMine(pathname === '/mypage/' + userEmail);
     }, [location.pathname, userEmail]);
 
     const resetState = () => {
@@ -52,9 +52,8 @@ const FooterNavbar = () => {
         handleNavigation('/news/', setAlarm);
       };
     
-      const handleMine = (userEmail) => {
-        resetState();
-        navigate('/basket/' + userEmail, {state:[userEmail,true]});
+      const handleMine = () => {
+        handleNavigation('/mypage/', setAlarm);
       };
     
 
