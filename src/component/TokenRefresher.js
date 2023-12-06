@@ -7,8 +7,8 @@ export default function TokenRefresher(){
     const navigate = new useNavigate();
 
     
-    // const basicUrl = 'http://13.209.154.183:8080';
-    const basicUrl = 'http://localhost:8080';
+    const basicUrl = 'http://13.209.154.183:8080';
+    // const basicUrl = 'http://localhost:8080';
 
     useEffect(()=>{
         axios.interceptors.request.use((req)=>{

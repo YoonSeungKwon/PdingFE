@@ -105,19 +105,19 @@ const ProductDetail = ({basicUrl}) => {
             <hr/>
             
             {/* 펀딩 정보 */}
-            <div className='font-content' style={{width:'90vw', marginTop:'1vh', height:'2vh', marginLeft:'3vw'}}>
+            <div className='font-content' style={{width:'90vw', marginTop:'1vh', height:'3vh', marginLeft:'3vw'}}>
               <span style={{float:'left', color:'#bbbbbb', width:'20vw', textAlign:'start'}}>카테고리</span>
               <span style={{float:'left'}}>{details.category}</span>
             </div>
-            <div className='font-content' style={{width:'90vw', marginTop:'1vh', height:'2vh', marginLeft:'3vw'}}>
+            <div className='font-content' style={{width:'90vw', marginTop:'1vh', height:'3vh', marginLeft:'3vw'}}>
               <span style={{float:'left', color:'#bbbbbb', width:'20vw', textAlign:'start'}}>상품명</span>
               <span style={{float:'left'}}>{details.option}</span>
             </div>
-            <div className='font-content' style={{width:'90vw', marginTop:'1vh', height:'2vh', marginLeft:'3vw'}}>
+            <div className='font-content' style={{width:'90vw', marginTop:'1vh', height:'3vh', marginLeft:'3vw'}}>
               <span style={{float:'left', color:'#bbbbbb', width:'20vw', textAlign:'start'}}>프딩일</span>
               <span style={{float:'left'}}>{details.regdate.substr(0,10)}</span>
             </div>
-            <div className='font-content' style={{width:'90vw', marginTop:'1vh', height:'2vh', marginLeft:'3vw'}}>
+            <div className='font-content' style={{width:'90vw', marginTop:'1vh', height:'3vh', marginLeft:'3vw'}}>
               <span style={{float:'left', color:'#bbbbbb', width:'20vw', textAlign:'start'}}>마감일</span>
               <span style={{float:'left'}}>🗓️{details.enddate.substr(0, 10)} / {handleDetailDate(details.enddate)}</span>
             </div>

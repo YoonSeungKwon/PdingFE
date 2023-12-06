@@ -30,8 +30,8 @@ function App() {
   const [shouldRenderFooterNavbar, setShouldRenderFooterNavbar] = useState(true);
   const userEmail = localStorage.getItem('userEmail');
 
-  // const basicUrl = 'http://13.209.154.183:8080';
-  const basicUrl = 'http://localhost:8080';
+  const basicUrl = 'http://13.209.154.183:8080';
+  // const basicUrl = 'http://localhost:8080';
 
   useEffect(() => {
     // 로컬 스토리지에서 토큰 가져오기
