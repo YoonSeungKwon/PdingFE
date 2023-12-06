@@ -1,6 +1,6 @@
 import React from 'react'
 
-const KakaoLogin = () => {
+const KakaoLogin2 = () => {
 
     const Rest_api_key = ''
     const redirect_uri = ''
@@ -14,4 +14,4 @@ const KakaoLogin = () => {
   )
 }
 
-export default KakaoLogin
+export default KakaoLogin2
