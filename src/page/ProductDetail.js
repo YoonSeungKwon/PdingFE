@@ -141,7 +141,7 @@ const ProductDetail = ({basicUrl}) => {
                 <div style={handlePercentage()}></div>
               </div>
               <br/>
-              <div style={{width:'92vw', textAlign:'center'}}>
+              <div style={{width:'92vw', textAlign:'center', marginTop:'3vh'}}>
                 <span className='font-content' style={{fontSize:'14px', color:'#777777', float:'left'}}>0%</span>
                 <span className='font-content' style={{fontSize:'14px', color:'#777777', }}>            50%</span>
                 <span className='font-content' style={{fontSize:'14px', color:'#777777', float:'right'}}>100%</span>
