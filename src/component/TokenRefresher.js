@@ -6,6 +6,10 @@ export default function TokenRefresher(){
     
     const navigate = new useNavigate();
 
+    
+    // const basicUrl = 'http://13.209.154.183:8080';
+    const basicUrl = 'http://localhost:8080';
+
     useEffect(()=>{
         axios.interceptors.request.use((req)=>{
             const token = localStorage.getItem('acc_token');
@@ -25,11 +29,13 @@ export default function TokenRefresher(){
                    if(error.response.data.status === 'ACCESS_TOKEN_EXPIRED'){
                         console.log('ACCESS_TOKEN_EXPIRED');
                         const token = localStorage.getItem('ref_token');
-                        await axios.get("http://13.209.154.183:8080/api/v1/", {headers:{
+                        await axios.get(basicUrl + "/api/v1/", {headers:{
                     'X-Refresh-Token': 'Bearer ' + token
                 }}).then((response)=>{
                     const acc_token = response.headers.get('Authorization');
                     localStorage.setItem('acc_token', acc_token);
+                }).catch(error=>{
+                    return Promise.reject(error);
                 })
                 error.response.headers.setAuthorization('Bearer ' + localStorage.getItem('acc_token'));
                 return axios(error.config);
@@ -40,6 +46,10 @@ export default function TokenRefresher(){
                 localStorage.removeItem('acc_token')
                 localStorage.removeItem('ref_token')
                 navigate("/login")
+            }
+            else if(error.response.status === 401){
+                alert('로그인이 필요한 서비스입니다.')
+                navigate('/Login')
             }
             else{
                 return Promise.reject(error);

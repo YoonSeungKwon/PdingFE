@@ -30,8 +30,11 @@ const Home = ({basicUrl}) => {
   }
 
   useEffect(() => { 
+    if(localStorage.getItem('userEmail') === null){
+        alert('로그인이 필요한 서비스입니다.')
+        navigate('/Login')
+    }
      console.log({state});
-
 },[]);
 
   return (
@@ -81,7 +84,7 @@ const Home = ({basicUrl}) => {
                     <SwiperSlide>
                         <Card className='cardsMain'>
                         <Card.Img variant="top" src="/img/mainItems/camera.png"  height="100px" width="160px" />
-                        <Card.Body className="p-2" >
+                        <Card.Body className="p-2">
                             <Card.Title className="fs-8 text-truncate">인스탁스 미니12 + 필름 10매</Card.Title>
                             <Card.Title className="fs-8">129,000원</Card.Title>
                             <Card.Text style={{color:'#7DA79D'}}>

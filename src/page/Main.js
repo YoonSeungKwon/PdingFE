@@ -73,8 +73,8 @@ const Main = ({basicUrl}) => {
               token={appKey}
               onSuccess={handleSuccess}
               onFail={handleFailure}
-              style={{background:'#ffffff', border:'0px'}}
-            ><img src='/img/kakao_login_large_wide.png' style={{width:'45vh', height:'48px'}}></img></KakaoLogin>
+              style={{float:'left', border: '0px', backgroundColor:'transparent'}}
+            ><img src='/img/kakao_login_large_wide.png' className='kakao-btn'></img></KakaoLogin>
             </div>
             <div><button className="login-btn-main" style={{borderRadius:'3px'}} onClick={joinMembership}>이메일로 로그인하기</button></div>
             <div><h5 style={{ fontSize: 'medium', textAlign:'center', color:'grey'}}>프딩이 처음이신가요? <Link className='signup_link' to='/Signup'>회원가입</Link></h5></div>

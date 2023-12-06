@@ -96,7 +96,7 @@ const Signup = ({basicUrl}) => {
       <div className='mysignupPage'>
         <div className='loginText'>
           <button className='btnclas' onClick={gotoPreview}>&lt;</button>
-          <div style={{float:'center', paddingTop:'4px', paddingRight:'30px'}}>회원가입</div>
+          <div style={{float:'center'}}>회원가입</div>
         </div>
         <div className='Signup'>
           <div>
@@ -108,7 +108,7 @@ const Signup = ({basicUrl}) => {
             </div>
             {/* 이메일 */}
             <div >
-              <input type='text' className='input-info-box' style={{width:'306px'}}  maxLength='30' name='signup_email' autoFocus placeholder='이메일' onChange={handleEmailChange}/>
+              <input type='text' className='input-info-box input-info-box-email'  maxLength='30' name='signup_email' autoFocus placeholder='이메일' onChange={handleEmailChange}/>
               <button className='checking-box' onClick={handleCheck}>중복 체크</button>
             </div>
 

@@ -15,6 +15,7 @@ const FriendsList = ({basicUrl}) => {
   const [selectedCategory, setSelectedCategory] = useState("전체");
   const [selectedButton, setSelectedButton] = useState("전체");
   const [project, setProject] = useState([]);
+  const [modal, setModal] = useState(false);
   const now = new Date();
 
 
@@ -48,7 +49,8 @@ const FriendsList = ({basicUrl}) => {
     setSearchEamil(e.target.value);
   }
   const handleProductPage = (idx) =>{
-    navigate('/details/'+idx, {state:[state[0],state[1], idx]});
+    console.log(idx)
+    navigate('/details/'+idx.idx, {state:idx.idx});
   }
 
   // const handleCategoryChange = (category) => {
@@ -72,11 +74,29 @@ const FriendsList = ({basicUrl}) => {
         alert("존재하지 않는 이메일입니다.")
         setSearchFriends([])
       }else{
+        setModal(true);
         const list = res.data;
         setSearchFriends(list)
       }
     }).catch((error)=>{
       console.log(error)
+    })
+  }
+
+  const handleFriendRequest = (i, email, oauth) =>{
+    setModal(false);
+    axios.post(basicUrl + '/api/v1/friends/link', {
+      'toUserEmail':email,
+      'oauth':oauth
+    }).then((res)=>{
+      console.log(res)
+      alert('친구 신청을 전송하였습니다.')
+      setSearchFriends(searchFriends.filter((idx)=>(idx !== i)))
+    }).catch((error)=>{
+      console.log(error)
+      const code = error.response.data.status
+      const msg = error.response.data.message
+      alert(msg + "   [" + code + "]")
     })
   }
 
@@ -90,6 +110,18 @@ const FriendsList = ({basicUrl}) => {
     + '시 ' + Math.floor((((temp.getTime() - now.getTime()) % (1000*60*60*24)) % (1000*60*60)) / (1000 * 60)) + '분';
   }
 
+  const handleTime = (regdate) => {
+    const temp = new Date(regdate.substr(0, 10)+' '+regdate.substr(11, 8))
+    const now = new Date();
+    console.log(temp)
+    if (Math.floor((now.getTime() - temp.getTime()) / (1000*60*60*24)) > 0 )
+      return Math.floor((now.getTime() - temp.getTime()) / (1000*60*60*24)) + '일 전'
+    else if(parseInt(Math.floor((now.getTime() - temp.getTime()) % (1000*60*60*24)))/(1000*60*60) > 0)
+      return parseInt(Math.floor((now.getTime() - temp.getTime()) % (1000*60*60*24))/(1000*60*60)) + '시간 전'
+    else
+      return parseInt(Math.floor((now.getTime() - temp.getTime()) % (1000*60*60*24))%(1000*60*60))/(1000*60) + 1 + '분 전'
+  }
+
   const formatEndDate = (endDateString) => {
     const formattedDate = endDateString.split('T')[0];
     return formattedDate;
@@ -100,17 +132,36 @@ const FriendsList = ({basicUrl}) => {
     <>
       <div className="full-screen all-all-screen">
         <Greenheader></Greenheader>
-          <div className='wantedFix' style={{  width: '100%' }} >
+          <div className='wantedFix' style={{width: '100%', top:'10vh'}} >
             {/* <div style={{position: 'fixed'}}> */}
+            {modal && 
+                  <div id='modal'>
+                    <div id='modal-content'>
+                      <button onClick={()=>setModal(false)} id='modal-btn'>X</button>
+                      {searchFriends.map((idx)=>(
+                        <div key={idx.email} className='modal-friend' style={{marginTop:'50px'}}>
+                          <img src={idx.profile} alt={idx.email} style={{float:'left', marginLeft:'5vw', width:'64px', border:'1px solid #cccccc', borderRadius:'50%'}}/>
+                          <span className='newsName' style={{float:'left',marginLeft:'2vw'}}>{idx.name}</span>
+                          <span className='hoursAgo' style={{float:'left',marginLeft:'2vw'}}>{handleTime(idx.lastVisit)}</span>
+                          <button className='newsButton' style={{marginRight:'2vw', float:'right', color:'#496D68'}} onClick={() =>handleFriendRequest(idx, idx.email, idx.oauth)}>친구 신청</button>
+                          <br/>
+                          <div className='hoursAgo' style={{float:'left',marginLeft:'3vw'}}>{idx.email}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+            }
             <div style={{position:'relative',textAlign: 'center', paddingTop:'3vh'}}>
                 <input className='input-friend-box'
                 value={searchEamil}
                 onChange={handleEmailChange}
                 placeholder='친구의 이름을 검색해 보세요.'
                 />
-                <button className='input-friend-btn'><span class="material-symbols-outlined">
-search
-</span></button>
+                <button className='input-friend-btn' onClick={()=>{handleSearch()}}>
+                  <span className="material-symbols-outlined">
+                    search
+                  </span>
+                </button>
             </div>
             <br/>
             <div style={{marginLeft:'2vh'}}>
@@ -127,23 +178,34 @@ search
 
           <div className='category_wrap pding-all-category-screen' style={{ margin: '0px auto', marginTop: '100px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
             {project.map((idx) => (
-              <Card className='cardsMain cardsShadow' key={idx.img} onClick={()=>handleProductPage(idx.idx)} style={{ width: '45%', marginBottom: '20px' }}>
-                <Card.Img variant="top" src={idx.img} height="100px" width="160px" />
-                <Card.Body className="p-2 border-0">
-                  <Card.Title className="fs-8"><img width={'24px'} src={idx.profile}></img>{idx.writer}</Card.Title>
-                  <Card.Title className="fs-8 " style={{fontSize:'14px', fontWeight:'500', fontFamily:'pretendard-medium'}}>{idx.title}</Card.Title>
-                  <div style={{textAlign:'center',display:'flex', justifyContent:'center'}}>
-                    <Card.Text style={{ color: '#7DA79D', fontSize:'12px', padding:'0 0.2vh',display:'flex', alignItems:'center'}}>
-                      <div style={{marginRight:'0.1vh'}}><img src={'/img/gift-friend.png'} width={'12px'}></img></div>
-                      {(idx.curr * 100) / idx.goal}%
+              <Card className='cardsMain cardsShadow' key={idx.img} onClick={()=>handleProductPage(idx)} style={{ width: '45%', marginBottom: '20px' }}>
+                <div style={{width:'100%', height:'50%', overflow:'hidden', borderRadius:'5px 5px 5px 5px', backgroundColor:'#cccccc', textAlign:'center', display:'flex', justifyContent:'center'}}>
+                  <Card.Img variant="top" src={idx.img} width="100%"/>
+                </div>
+                <Card.Body className="p-2 border-0 card-body-h">
+                  <Card.Title className="fs-8">
+                    <div>
+                      <img src={idx.profile} className='card-profile'/>
+                      <span className='card-title font-content' style={{marginLeft:'2vw'}}>{idx.writer}</span>
+                    </div>  
+                  </Card.Title>
+                  <Card.Title className="fs-8 " style={{fontWeight:'500', fontFamily:'pretendard-medium'}}>
+                    <span className='card-content'>
+                      {idx.title}
+                    </span>
+                  </Card.Title>
+                  <div style={{textAlign:'center'}}>
+                    <Card.Text style={{ color: '#7DA79D', padding:'0 0.2vh',display:'flex', alignItems:'center'}}>
+                      <div style={{marginRight:'0.1vh'}}><img src={'/img/gift-friend.png'} className='card-img-small'></img></div>
+                      <span className='card-info'>{(idx.curr * 100) / idx.goal}%</span>
                     </Card.Text>
-                    <Card.Text style={{ color: '#7b7b7b', fontSize:'12px', padding:'0 0.2vh',display:'flex' , alignItems:'center' }}>
-                      <div style={{marginRight:'0.1vh'}}><img src={'/img/profile-2user.png'} width={'12px'}></img></div>
-                      {idx.idx}명
+                    <Card.Text style={{ color: '#7b7b7b', padding:'0 0.2vh', float:'left'}}>
+                      <div style={{marginRight:'0.1vh'}}><img src={'/img/profile-2user.png'} className='card-img-small'></img></div>
+                      <span className='card-info'>{idx.count}명</span>
                     </Card.Text>
-                    <Card.Text style={{ color: '#7b7b7b', fontSize:'12px', padding:'0 0.2vh',display:'flex' , alignItems:'center'}}>
-                      <div style={{marginRight:'0.1vh'}}><img src={'/img/calendar-friend.png'} width={'12px'}></img></div>
-                      {formatEndDate(idx.enddate)}
+                    <Card.Text style={{ color: '#7b7b7b', padding:'0 0.2vh', float:'right'}}>
+                      <div style={{marginRight:'0.1vh'}}><img src={'/img/calendar-friend.png'} className='card-img-small'></img></div>
+                      <span className='card-info'>{formatEndDate(idx.enddate)}</span>
                     </Card.Text>
                   </div>
                 </Card.Body>

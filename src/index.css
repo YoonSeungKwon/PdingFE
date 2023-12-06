@@ -232,9 +232,6 @@ footer{
   width: 100%;
   z-index: 2;
   background-color: white;
-  margin-bottom: -3vh;
-
-
 }
 
 .all-screen{
@@ -676,4 +673,536 @@ footer{
   left: 0;
   right: 0;
   height: 109px;
+}
+
+#modal{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+@media(max-width:767px){
+  .card-title{
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .card-body-h{
+    height: 25vh;
+  }
+  .card-profile{
+    width: 10vw;
+    height:10vw;
+    border: 1px solid #dddddd;
+    box-shadow: 0px 0px 3px 1px #eeeeee;
+    border-radius: 45px;    
+  }
+  .card-content{
+    font-size: 13px;
+  }
+  .card-img-small{
+    width:5vw;
+  }
+  .card-info{
+    font-size: 10px;
+  }
+  .back-btn{
+    width: 7vw;
+  }
+  .kakao-btn{
+    width:75vw;
+    margin-top: 20px;
+  }
+  .show-background {
+    background-image: url(../public/img/loginback.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100vw;
+  }
+  .login-btn-main{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 75vw;
+    height: 11.26vw;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-family : 'pretendard-regular';
+    margin-bottom: 1vh;
+    background-color: white;
+    color: black;
+  }
+  .input-info-box{
+    width: 75vw;
+    height: 38px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: white;
+    font-family : 'pretendard-regular';
+    margin-bottom: 1vh;
+    padding-left: 2vh;
+  }
+  .input-info-box-email{
+    width: 60vw;
+    height: 38px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: white;
+    font-family : 'pretendard-regular';
+    margin-bottom: 1vh;
+    padding-left: 2vh;
+  }
+  .checking-box{
+    width: 13vw;
+    height: 38px;
+    border-radius: 10px;
+    background-color: #496D68;
+    font-size: 2vw;
+    font-family : 'pretendard-regular';
+    color:white;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    text-align: center;
+    flex: 1;
+  }
+  .login-btn{
+    width: 75vw;
+    height: 38px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-family : 'pretendard-regular';
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    background-color: #D0F0E3;
+    color: #ffffff;
+  
+    &.filled {
+      background-color: #496D68; 
+    }
+  
+    &.unfilled {
+      background-color: #D0F0E3;
+      opacity: 0.5; 
+    }
+  }
+  .loginText{
+    width: 100%;
+    margin-top: 53px;
+    height: 56px;
+    text-align:center;
+    align-items: center;
+    font-family : 'pretendard-medium';
+    font-size: x-large;
+    top: 0;
+    position: fixed;
+  }
+  .mysignupPage{
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    margin-top:16vh;
+  }
+  .input-friend-box{
+    width: 75vw;
+    height: 40px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: white;
+    font-family : 'pretendard-regular';
+    margin-bottom: 1vh;
+    padding-left: 2vh;
+    align-items: center;
+  }
+
+  #modal-content{
+    width: 80vw;
+    height: 30vh;
+    margin-bottom: 30vh;
+    position: absolute;
+    border-radius: 10px;
+    background-color:#ffffff;
+    z-index: 2;
+  }
+  
+  #modal-btn{
+    position: absolute;
+    font-weight: bold;
+    border:0;
+    background-color: transparent;
+    top:0;
+    right:0;
+  }
+  
+  #modal-friend{
+    width: 40vw;
+    height: 70px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .card-title{
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .card-body-h{
+    height: 20vh;
+  }
+  .card-profile{
+    width: 5vw;
+    height:5vw;
+    border: 1px solid #dddddd;
+    box-shadow: 0px 0px 3px 1px #eeeeee;
+    border-radius: 45px;    
+  }
+  .card-content{
+    font-size: 15px;
+  }
+  .card-img-small{
+    width:3vw;
+  }
+  .card-info{
+    font-size: 12px;
+  }
+  .back-btn{
+    width: 5vw;
+  }
+  .kakao-btn{
+    width:45vh;
+  }
+  .show-background {
+    background-image: url(../public/img/loginback.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+     background-size: 50vh;
+  }
+  .login-btn-main{
+    width: 45vh;
+    height: 6.75vh;
+    margin-top: 10px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-family : 'pretendard-regular';
+    margin-bottom: 1vh;
+    background-color: white;
+    color: black;
+  }
+  .input-info-box{
+    width: 50vw;
+    height: 38px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: white;
+    font-family : 'pretendard-regular';
+    margin-bottom: 1vh;
+    padding-left: 2vh;
+  }
+  .input-info-box-email{
+    width: 42vw;
+    height: 38px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: white;
+    font-family : 'pretendard-regular';
+    margin-bottom: 1vh;
+    padding-left: 2vh;
+  }
+  .checking-box{
+    width: 6vw;
+    height: 38px;
+    border-radius: 10px;
+    background-color: #496D68;
+    font-size: 1vw;
+    font-family : 'pretendard-regular';
+    color:white;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    text-align: center;
+    flex: 1;
+  }
+  .login-btn{
+    width: 50vw;
+    height: 38px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-family : 'pretendard-regular';
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    background-color: #D0F0E3;
+    color: #ffffff;
+  
+    &.filled {
+      background-color: #496D68; 
+    }
+  
+    &.unfilled {
+      background-color: #D0F0E3;
+      opacity: 0.5; 
+    }
+  }
+  .loginText{
+    width: 100%;
+    margin-top: 53px;
+    height: 56px;
+    text-align:center;
+    align-items: center;
+    font-family : 'pretendard-medium';
+    font-size: x-large;
+    top: 0;
+    position: fixed;
+  }
+  .mysignupPage{
+    margin-top:16vh;
+    width: 100vw;
+    height: 100vh;  
+    text-align: center;
+  }
+  .input-friend-box{
+    width: 50vw;
+    height: 40px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: white;
+    font-family : 'pretendard-regular';
+    margin-bottom: 1vh;
+    padding-left: 2vh;
+    align-items: center;
+  }
+  #modal-content{
+    width: 50vw;
+    height: 30vh;
+    margin-bottom: 30vh;
+    position: absolute;
+    border-radius: 10px;
+    background-color:#ffffff;
+    z-index: 2;
+  }
+  
+  #modal-btn{
+    position: absolute;
+    font-weight: bold;
+    border:0;
+    background-color: transparent;
+    top:0;
+    right:0;
+  }
+  
+  #modal-friend{
+    width: 40vw;
+    height: 70px;
+  }
+}
+
+@media (min-width: 992px){
+  .card-title{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .card-body-h{
+    height: 20vh;
+  }
+  .card-profile{
+    width: 7vh;
+    height:7vh;
+    border: 1px solid #dddddd;
+    box-shadow: 0px 0px 3px 1px #eeeeee;
+    border-radius: 45px;    
+  }
+  .card-content{
+    font-size: 18px;
+  }
+  .card-img-small{
+    width:4vh;
+  }
+  .card-info{
+    font-size: 14px;
+  }
+  .back-btn{
+    width: 5vh;
+  }
+  .kakao-btn{
+    width:45vh;
+  }
+  .show-background {
+    background-image: url(../public/img/loginback.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+     background-size: 50vh;
+  }
+  .login-btn-main{
+    margin-top: 10px;
+    width: 45vh;
+    height: 6.75vh;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-family : 'pretendard-regular';
+    margin-bottom: 1vh;
+    background-color: white;
+    color: black;
+  }
+  .input-info-box{
+    width: 48vh;
+    height: 48px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: white;
+    font-family : 'pretendard-regular';
+    margin-bottom: 1vh;
+    padding-left: 2vh;
+  }
+  .input-info-box-email{
+    width: 40vh;
+    height: 48px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: white;
+    font-family : 'pretendard-regular';
+    margin-bottom: 1vh;
+    padding-left: 2vh;
+  }
+  .checking-box{
+    width: 7vh;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #496D68;
+    font-size: 1.3vh;
+    font-family : 'pretendard-regular';
+    color:white;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+    text-align: center;
+    flex: 1;
+  }
+  .login-btn{
+    width: 48vh;
+    height: 48px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-family : 'pretendard-regular';
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    background-color: #D0F0E3;
+    color: #ffffff;
+  
+    &.filled {
+      background-color: #496D68; 
+    }
+  
+    &.unfilled {
+      background-color: #D0F0E3;
+      opacity: 0.5; 
+    }
+  }
+  .loginText{
+    margin-top: 53px;
+    height: 56px;
+    text-align:center;
+    width:100%;
+    align-items: center;
+    font-family : 'pretendard-medium';
+    font-size: x-large;
+    top: 0;
+    position: fixed;
+  }
+  .mysignupPage{
+    text-align: center;
+    margin-top: 16vh;
+    width: 100vw;
+    height: 100vh;
+  }
+  .input-friend-box{
+    width: 48vh;
+    height: 40px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: white;
+    font-family : 'pretendard-regular';
+    margin-bottom: 1vh;
+    padding-left: 2vh;
+    align-items: center;
+  }
+  #modal-content{
+    width: 50vw;
+    height: 30vh;
+    margin-bottom: 30vh;
+    position: absolute;
+    border-radius: 10px;
+    background-color:#ffffff;
+    z-index: 2;
+  }
+  
+  #modal-btn{
+    position: absolute;
+    font-weight: bold;
+    border:0;
+    background-color: transparent;
+    top:0;
+    right:0;
+  }
+  
+  #modal-friend{
+    width: 40vw;
+    height: 70px;
+  }
+}
+
+.font-main{
+  font-size: 16px;
+  font-family: 'omyu_pretty';
+  color: #555555;
+}
+
+.font-content{
+  font-family: 'pretendard-regular';
+  color:#000000;
+}
+
+.font-profile{
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'omyu_pretty';
+  color:#000000;
+}
+
+.font-bold{
+  font-weight: bold;
+}
+
+.profileBox-small{
+  width: 8vh;
+  height:8vh;
+  border: 1px solid #dddddd;
+  box-shadow: 0px 0px 3px 1px #eeeeee;
+  border-radius: 45px;
+}
+
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.btnColor1{
+  width:100%;
+  height:100%;
+  border-radius:5px 5px 5px 5px;
+  text-align:center;
+
+  line-height:5vh;
+  cursor:pointer;
+  background-color:#777777;
+}
+
+.btnColor2{
+  width:100%;
+  height:100%;
+  border-radius:5px 5px 5px 5px;
+  text-align:center;
+  line-height:5vh;
+  cursor:pointer;
+  background-color:#496D68;
 }

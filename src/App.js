@@ -4,7 +4,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Routes, Route, useLocation} from "react-router-dom";
 import FriendsList from './page/FriendsList';
-import ProductDetail from './page/ProductDetail';
 import Main from './page/Main';
 import Basket from './page/Basket';
 import Login from './page/Login';
@@ -19,6 +18,9 @@ import Mypage from "./page/Mypage";
 import SavedGifts from "./page/SavedGifts";
 import Participating from "./page/Participating";
 import OngoingPding from "./page/OngoingPding";
+import Pay from './page/Pay';
+import ProductDetail from './page/ProductDetail';
+import Success from './page/Success';
 
 
 
@@ -26,10 +28,10 @@ function App() {
   const location = useLocation();
   const [shouldRenderGreenheader, setShouldRenderGreenheader] = useState(true);
   const [shouldRenderFooterNavbar, setShouldRenderFooterNavbar] = useState(true);
-  const basicUrl = 'http://13.209.154.183:8080';
   const userEmail = localStorage.getItem('userEmail');
 
-  // const localUrl = 'http://localhost:8080';
+  // const basicUrl = 'http://13.209.154.183:8080';
+  const basicUrl = 'http://localhost:8080';
 
   useEffect(() => {
     // 로컬 스토리지에서 토큰 가져오기
@@ -42,8 +44,6 @@ function App() {
 
   return (
     <div >
-      {shouldRenderGreenheader && <Greenheader />}
-      {shouldRenderFooterNavbar && <FooterNavbar />}
       <Routes>
         <Route path="/" element={<Main basicUrl={basicUrl}/>}/>
         <Route path="/basket/:id" element={<Basket basicUrl={basicUrl}/>}/>
@@ -59,6 +59,8 @@ function App() {
         <Route path="/ongoing/:id" element={<OngoingPding basicUrl={basicUrl}/>}/>
         <Route path="/participate/:id" element={<Participating basicUrl={basicUrl}/>}/>
         <Route path="/saved/:id" element={<SavedGifts basicUrl={basicUrl}/>}/>
+        <Route path="/pay/:id" element={<Pay basicUrl={basicUrl}/>}/>
+        <Route path="/success" element={<Success/>}/>
       </Routes>
      
     </div>

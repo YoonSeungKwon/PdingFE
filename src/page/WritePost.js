@@ -64,7 +64,7 @@ const WritePost = ({basicUrl}) => {
         <div className='Formstyle'>소개글<h style={{color:'red'}}>*</h></div>
            <div><input value={content}  style={{fontSize:'14px'}}  className='FundingBox' placeholder='프딩을 위한 소개글을 작성해 주세요.'   onChange={e=>setContent(e.target.value)}/></div>
       </div>
-      <div style={{textAlign:'center',display:'flex', justifyContent:'center', paddingBottom:'2vh', marginLeft:'-1.5vh'}}>
+      <div style={{paddingBottom:'2vh'}}>
         <div className='Formstyle' style={{paddingRight:'3vh', marginLeft:'-1vh'}} >카테고리<h style={{color:'red'}}>*</h></div>
           <select className='dropbtn' value={category} onChange={handleCategoryChange}>
             <option value="none" >카테고리를 선택해 주세요.</option>

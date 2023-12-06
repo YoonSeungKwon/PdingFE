@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 // import { useHistory } from "react-router-dom"
@@ -9,6 +9,10 @@ const Login = ({basicUrl}) => {
   const navigate = useNavigate();
   const [isFormFilled, setIsFormFilled] = useState(false);
   
+  useEffect(()=>{
+    localStorage.clear();
+  },[])
+
   const gotoPreview = (e) =>{
     navigate('/');
   }
@@ -62,7 +66,7 @@ const Login = ({basicUrl}) => {
     const code = error.response.data.status
 
     alert(msg + "   [" + code + "]")
-
+    localStorage.clear();
     setEmail("");
     setPassword("");
 
