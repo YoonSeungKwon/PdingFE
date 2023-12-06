@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import FooterNavbar from '../component/FooterNavbar';
 import Greenheader from '../component/Greenheader';
+import { useNavigate } from 'react-router-dom';
 
 const WritePost = ({basicUrl}) => {
 
   const formData =  new FormData();
+  const navigate = new useNavigate();
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -36,11 +38,13 @@ const WritePost = ({basicUrl}) => {
     formData.append("dto",new Blob([JSON.stringify(data)], {type:'application/json'}))
     console.log(formData)
 
-    axios.post(basicUrl + '/api/v1/test@test.com/social=false/projects/', formData, {
+    axios.post(basicUrl + '/api/v1/projects/', formData, {
       headers: {'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>'},
     }
     ).then((res)=>{
       console.log(res);
+      alert('프딩을 게시하였습니다')
+      navigate(-1)
     }).catch((error)=>{
       console.log(error)
     });
