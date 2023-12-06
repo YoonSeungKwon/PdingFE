@@ -125,7 +125,7 @@ search
             </div>
       </div>
 
-          <div className='category_wrap pding-all-category-screen' style={{ margin: '0px auto', marginTop: '100px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+          <div className=' pding-all-category-screen'>
             {project.map((idx) => (
               <Card className='cardsMain cardsShadow' key={idx.img} onClick={()=>handleProductPage(idx.idx)} style={{ width: '45%', marginBottom: '20px' }}>
                 <Card.Img variant="top" src={idx.img} height="100px" width="160px" />

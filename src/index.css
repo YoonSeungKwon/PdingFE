@@ -56,7 +56,7 @@ body {
   .Main{
     position: relative;
     z-index: 0;
-    display: flex;
+    display: block;
     justify-content: center; 
     align-items: center;   
     flex-direction: column; 
@@ -108,6 +108,7 @@ header{
   left: 0;
   right: 0;
   height: 109px;
+  z-index: 2;
 }
 
 .greenText{
@@ -223,7 +224,7 @@ footer{
   overflow-y: auto;
   margin-top: 13vh;
   margin-bottom: -20%; 
-  height: 100%;
+  height: 100vh;
   padding-bottom: 10vh;
 }
 
@@ -234,23 +235,24 @@ footer{
   background-color: white;
   margin-bottom: -3vh;
 
-
 }
 
 .all-screen{
   width:100%;
-  position: fixed;
-  z-index: 2;
-  /* top:-3vh; */
+  /* position: fixed; */
+  /* z-index: 1; */
+  /* margin-bottom: 5vh; */
+  overflow-y: auto;
 }
 
 .pding-all-category-screen{
-  overflow-y: auto;
-  /* margin-top: 25vh; */
-  padding-top: 13vh;
-  /* margin-bottom: -20%;  */
-  height: 100%;
-  /* padding-bottom: 10vh; */
+  /* overflow-y: auto; */
+  margin-top: 27vh;
+  margin-bottom: 1vh; 
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .cardsMain{
@@ -259,7 +261,6 @@ footer{
   position: relative;
   z-index: 1;
   border-color: white;
-  
 }
 
 .mainGiftText{
@@ -434,9 +435,6 @@ footer{
   color:#496D68;
 }
 
-/* .category_wrap{
-
-} */
 
 
 /* 알림창 메뉴 */
