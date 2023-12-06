@@ -98,9 +98,9 @@ const FriendsList = ({basicUrl}) => {
 
   return (
     <>
-      <div className="full-screen all-all-screen">
+      <div className="full-screen all-alert-screen">
         <Greenheader></Greenheader>
-          <div className='all-screen' style={{position: 'relative'}} >
+          <div style={{position: 'relative'}} >
             <div className='newsBox' style={{textAlign:'center', display:'flex'}}>
               <div className={`submenu-news${myNews ? ' active' : ''}`} onClick={handleMyNews}>
                   <p style={myNews ? { color:'#496D68' } : { color: 'grey' }}>

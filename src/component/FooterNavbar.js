@@ -24,7 +24,7 @@ const FooterNavbar = () => {
       setHome(pathname === '/home/' + userEmail);
       setPding(pathname === '/pding/' + userEmail);
       setAlarm(pathname === '/news/' + userEmail);
-      setMine(pathname === '/mypage/' + userEmail);
+      setMine(pathname === '/basket/' + userEmail);
     }, [location.pathname, userEmail]);
 
     const resetState = () => {
@@ -56,29 +56,30 @@ const FooterNavbar = () => {
         handleNavigation('/mypage/', setAlarm);
       };
     
+    
 
   return (
-    <footer style={{ height:'8%', backgroundColor:'white'}}>
-            <div className='icons' onClick={handleHome}>
-                <img src={home? PressedHome : Home }alt="icon" style={{width:'25%'}}/>
+    <footer style={{ height:'8%', backgroundColor:'white', width:'100vw'}}>
+            <div className='icons' onClick={handleHome}style={{float:'left'}}>
+                <img src={home? PressedHome : Home }alt="icon" style={{width:'25px'}}/>
                 <p style={home ? { color:'#496D68' } : { color: 'grey' }}>
                     홈
                 </p>
             </div>
-            <div className='icons' onClick={handlePding}>
-                <img src={pding? PressedPding : Pding }alt="icon"style={{width:'25%'}}/>
+            <div className='icons' onClick={handlePding}style={{float:'left'}}>
+                <img src={pding? PressedPding : Pding }alt="icon"style={{width:'25px'}}/>
                 <p style={pding ? { color:'#496D68' } : { color: 'grey' }}>
-                    프딩
+                    친구
                 </p>
             </div>
-            <div className='icons' onClick={handleAlarm}>
-                <img src={alarm? PressedAlarm : Alarm }alt="icon"style={{width:'25%'}}/>
+            <div className='icons' onClick={handleAlarm}style={{float:'left'}}>
+                <img src={alarm? PressedAlarm : Alarm }alt="icon"style={{width:'25px'}}/>
                 <p style={alarm ? { color:'#496D68' } : { color: 'grey' }}>
                     알림
                 </p>
             </div>
-            <div className='icons' onClick={handleMine} style={{ float:'left'}}>
-                <img src={mine? PressedMine : Mine }alt="icon"style={{width:'25%'}}/>
+            <div className='icons' onClick={handleMine} style={{float:'left'}}>
+                <img src={mine? PressedMine : Mine }alt="icon" style={{width:'25px'}}/>
                 <p style={mine ? { color:'#496D68' } : { color: 'grey' }}>
                     MY
                 </p>

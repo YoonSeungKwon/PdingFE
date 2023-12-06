@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import FooterNavbar from '../component/FooterNavbar';
 import Greenheader from '../component/Greenheader';
+import { useNavigate } from 'react-router-dom';
 
 const WritePost = ({basicUrl}) => {
 
   const formData =  new FormData();
+  const navigate = new useNavigate();
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -36,11 +38,13 @@ const WritePost = ({basicUrl}) => {
     formData.append("dto",new Blob([JSON.stringify(data)], {type:'application/json'}))
     console.log(formData)
 
-    axios.post(basicUrl + '/api/v1/test@test.com/social=false/projects/', formData, {
+    axios.post(basicUrl + '/api/v1/projects/', formData, {
       headers: {'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>'},
     }
     ).then((res)=>{
       console.log(res);
+      alert('프딩을 게시하였습니다')
+      navigate(-1)
     }).catch((error)=>{
       console.log(error)
     });
@@ -64,7 +68,7 @@ const WritePost = ({basicUrl}) => {
         <div className='Formstyle'>소개글<h style={{color:'red'}}>*</h></div>
            <div><input value={content}  style={{fontSize:'14px'}}  className='FundingBox' placeholder='프딩을 위한 소개글을 작성해 주세요.'   onChange={e=>setContent(e.target.value)}/></div>
       </div>
-      <div style={{textAlign:'center',display:'flex', justifyContent:'center', paddingBottom:'2vh', marginLeft:'-1.5vh'}}>
+      <div style={{paddingBottom:'2vh'}}>
         <div className='Formstyle' style={{paddingRight:'3vh', marginLeft:'-1vh'}} >카테고리<h style={{color:'red'}}>*</h></div>
           <select className='dropbtn' value={category} onChange={handleCategoryChange}>
             <option value="none" >카테고리를 선택해 주세요.</option>
