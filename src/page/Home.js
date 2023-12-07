@@ -48,7 +48,7 @@ const Home = ({basicUrl}) => {
         </div>
         <div className='main-items gift-button-box'>
             <button className='writeButton'style={{marginTop:'2vh'}} onClick={()=>navigate("/write")}>
-                <p style={{marginTop:'0.1vh'}}>+</p>
+                <span style={{fontSize:'30px', lineHeight:'30px'}}>+</span>
             </button>
             <div className='wantedGift'>원하는 선물 프딩하러 가기</div>
         </div>
