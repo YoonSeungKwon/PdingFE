@@ -78,7 +78,7 @@ const WritePost = ({basicUrl}) => {
            {/* <div><input value={category} style={{fontSize:'14px'}}   onChange={e=>setCategory(e.target.value)}/></div> */}
       </div>
       <div>
-        <div className='Formstyle'>URL<h style={{color:'red'}}>*</h></div>
+        <div className='Formstyle'>Url<h style={{color:'red'}}>*</h></div>
            <div><input value={link} style={{fontSize:'14px'}}  className='FundingBox' placeholder='받고 싶은 선물의 URL을 입력해 주세요.'   onChange={e=>setLink(e.target.value)}/></div>
       </div>
       <div>

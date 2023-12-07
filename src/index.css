@@ -114,15 +114,14 @@ header{
 .greenText{
   color:white;
   font-family: HS_summer;
-  font-size: 34px;
+  font-size: 5vh;
   font-style: normal;
   font-weight: 700;
-  line-height: 28px;
+  line-height: 5vh;
   align-items: center;
-  height: 56px;
   display:flex;
   justify-content: center;
-  padding-top: 1.5vh;
+  margin-top: 3vh;
 }
 
 /* .haeder-logo-image{
@@ -198,7 +197,7 @@ footer{
 .icons{
   text-align: center;
   flex: 1;
-  margin-top: 1.5vh;
+  margin-top: 3px;
  
 }
 
@@ -571,35 +570,35 @@ footer{
 
 /* 마이 페이지 */
 .mypageProfile{
-  height: 27vh;
-  top:109px;
+  height: 30vh;
   width:100%;
 }
 
 .all-mypage-screen{
   display: block;
   overflow-y: auto;
-  margin-top: 109px;
+  margin-top: 20vh;
   height: 100%;
   padding-bottom: 10vh;
 }
 
 .mypageProfileBox{
-  width: 10vh;
-  height:10vh;
+  width: 50px;
+  height:50px;
   border: 1px solid #dddddd;
   border-radius: 45px;
   margin-top: 2vh;
 }
 
 .mypageWriteButton{
-  line-height: 3vh;
   background-color: #496D68;
   color: white;
   border: none;
   border-radius: 50%;
   width:4vh;
   height:4vh;
+  text-align: center;
+  line-height: 4vh;
 }
 
 .mypageMenu{
@@ -793,6 +792,11 @@ footer{
     text-align: center;
     margin-top:16vh;
   }
+  .input-wrap{
+    width: 75vw;
+    height: 40px;
+    margin-left: 12.5vw;
+  }
   .input-friend-box{
     width: 75vw;
     height: 40px;
@@ -806,8 +810,8 @@ footer{
   }
   .input-friend-btn{
     position: absolute;
-    right: 14vw;
-    padding-top: 0.8vh;
+    right: 12.5vw;
+    margin-top: 1vh;
     border: 0;
     background-color: transparent;
   }
@@ -954,6 +958,11 @@ footer{
     height: 100vh;  
     text-align: center;
   }
+  .input-wrap{
+    width: 50vw;
+    height: 40px;
+    margin-left: 25vw;
+  }
   .input-friend-box{
     width: 50vw;
     height: 40px;
@@ -968,7 +977,7 @@ footer{
   .input-friend-btn{
     position: absolute;
     right: 26vw;
-    padding-top: 0.8vh;
+    margin-top: 1vh;
     border: 0;
     background-color: transparent;
   }
@@ -1114,6 +1123,11 @@ footer{
     width: 100vw;
     height: 100vh;
   }
+  .input-wrap{
+    width: 30vw;
+    height: 40px;
+    margin-left: 35vw;
+  }
   .input-friend-box{
     width: 30vw;
     height: 40px;
@@ -1127,8 +1141,8 @@ footer{
   }
   .input-friend-btn{
     position: absolute;
-    right: 35vw;
-    padding-top: 0.8vh;
+    right: 33.5vw;
+    margin-top: 1vh;
     border: 0;
     background-color: transparent;
   }

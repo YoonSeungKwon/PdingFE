@@ -47,12 +47,12 @@ const Home = ({basicUrl}) => {
             <div><img src={userProfile} className='row-align profileBox'></img></div>
         </div>
         <div className='main-items gift-button-box'>
-            <button className='writeButton'style={{marginTop:'2vh'}} onClick={()=>navigate("/write")}>
+            <button className='writeButton'style={{marginTop:'2vh',textAlign:'center'}} onClick={()=>navigate("/write")}>
                 <span style={{fontSize:'30px', lineHeight:'30px'}}>+</span>
             </button>
             <div className='wantedGift'>원하는 선물 프딩하러 가기</div>
         </div>
-        <div className='main-items best-ten'>
+        <div className='main-items best-ten'> 
             <div className='mainGiftText'>인기 선물 TOP 10</div>
             <div className='card-box-main'>
                 <Swiper

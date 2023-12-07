@@ -46,7 +46,16 @@ const Main = ({basicUrl}) => {
       console.log(res);
       localStorage.setItem('acc_token', res.headers.authorization); 
       localStorage.setItem('ref_token', res.headers.get("x-refresh-token")); 
-      navigate('/list/' + res.data.email)
+      localStorage.setItem('userProfile', res.data.profile);
+      localStorage.setItem('userName', res.data.name);
+      localStorage.setItem('oauth', res.data.oauth);
+      localStorage.setItem('userEmail', res.data.email);
+      navigate('/home/' + res.data.email, {
+        state:{
+          name: res.data.name,
+          profile: res.data.profile,
+        }
+      })
     }).catch((error)=>{
       console.log(error);
     })
