@@ -62,7 +62,7 @@ const Home = ({basicUrl}) => {
                     slidesPerView={2}
                     modules={[Scrollbar]}
                     className="mySwiper"
-                    spaceBetween={70}
+                    spaceBetween={10}
                     slidesOffsetAfter={75}
                     pagination={{
                     clickable: true,
@@ -130,7 +130,7 @@ const Home = ({basicUrl}) => {
                     slidesPerView={2}
                     modules={[Scrollbar]}
                     className="mySwiper"
-                    spaceBetween={70}
+                    spaceBetween={10}
                     slidesOffsetAfter={75}
                     pagination={{
                     clickable: true,

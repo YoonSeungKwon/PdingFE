@@ -36,12 +36,12 @@ const Home = ({basicUrl}) => {
         <div className='mypageProfile' style={{textAlign:'center', alignItems:'center', backgroundColor:'#f5f5f5', justifyContent:'center'}}>
           <div>
             <img src={userProfile} className=' mypageProfileBox' />
-            <div style={{marginTop:'2vh', height:'4vh', display:'flex', alignItems:'center', justifyContent:'center'}}>
+            <div style={{height:'4vh', display:'flex', alignItems:'center', justifyContent:'center', marginTop:'-5vh', marginRight:'-10vh'}}>
               <div className='mypageWriteButton'onClick={()=>navigate("/write")}></div>
-              <img src='/img/edit.png' style={{height:'2vh', position:'absolute'}}></img>
+              <img src='/img/edit.png' style={{height:'3vh', position:'absolute'}}></img>
             </div>
           </div>
-          <div style={{whiteSpace:'nowrap'}}>
+          <div style={{whiteSpace:'nowrap', marginTop:'3vh'}}>
             <span className='font-content font-bold' style={{fontSize:'3vh', display:'block'}}>{userName}</span>
             <span className='font-content' style={{color:'#7b7b7b', fontSize:'2vh'}}>{userEmail}</span>
           </div>
