@@ -49,8 +49,7 @@ const ProductDetail = ({basicUrl}) => {
     const temp = new Date(enddate.substr(0, 10)+' '+enddate.substr(11, 8)); 
     if(temp.getTime() - now.getTime() < 0)
       return '종료';
-    return ' 종료까지  ' + Math.floor((temp.getTime() - now.getTime()) / (1000*60*60*24)) + '일 ' + Math.floor(((temp.getTime() - now.getTime()) % (1000*60*60*24)) / (1000*60*60))
-    + '시간 남음';
+    return Math.floor((temp.getTime() - now.getTime()) / (1000*60*60*24));
   }
   
   const handleTime = (regdate) => {
@@ -119,7 +118,7 @@ const ProductDetail = ({basicUrl}) => {
             </div>
             <div className='font-content' style={{width:'90vw', marginTop:'1vh', height:'3vh', marginLeft:'3vw', fontSize:'2vh'}}>
               <span style={{float:'left', color:'#777777', width:'20vw', textAlign:'start'}}>마감일</span>
-              <span style={{float:'left', fontSize:'1.5vh'}}>🗓️{details.enddate.substr(0, 10)} / {handleDetailDate(details.enddate)}</span>
+              <span style={{float:'left', fontSize:'1.5vh'}}>🗓️{details.enddate.substr(0, 10)} / 종료까지 <span style={{color:'red'}}>{handleDetailDate(details.enddate)}</span> 일 남음</span>
             </div>
 
             <hr/>
