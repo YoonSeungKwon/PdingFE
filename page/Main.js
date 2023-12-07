@@ -78,12 +78,15 @@ const Main = ({basicUrl}) => {
             친구들이 금액을 채워주는 크라우드 펀딩 형태의<br></br>
             모바일 중점 웹 서비스입니다.
             </div>
-            <div className='marginbottonchange'><KakaoLogin
+            <div className='marginbottonchange'>
+              <KakaoLogin
               token={appKey}
               onSuccess={handleSuccess}
               onFail={handleFailure}
               style={{float:'left', border: '0px', backgroundColor:'transparent'}}
-            ><img src='/img/kakao_login_large_wide.png' className='kakao-btn'></img></KakaoLogin>
+              >
+                <img src='/img/kakao_login_large_wide.png' className='kakao-btn' />
+              </KakaoLogin>
             </div>
             <div><button className="login-btn-main" style={{borderRadius:'3px'}} onClick={joinMembership}>이메일로 로그인하기</button></div>
             <div><h5 style={{ fontSize: 'medium', textAlign:'center', color:'grey'}}>프딩이 처음이신가요? <Link className='signup_link' to='/Signup'>회원가입</Link></h5></div>

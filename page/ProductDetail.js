@@ -118,7 +118,7 @@ const ProductDetail = ({basicUrl}) => {
             </div>
             <div className='font-content' style={{width:'90vw', marginTop:'1vh', height:'3vh', marginLeft:'3vw', fontSize:'2vh'}}>
               <span style={{float:'left', color:'#777777', width:'20vw', textAlign:'start'}}>마감일</span>
-              <span style={{float:'left', fontSize:'1.5vh'}}>🗓️{details.enddate.substr(0, 10)} / 종료까지 <span style={{color:'red'}}>{handleDetailDate(details.enddate)}</span> 일 남음</span>
+              <span style={{float:'left'}}>🗓️{details.enddate.substr(0, 10)} / 종료까지 <span style={{color:'red'}}>{handleDetailDate(details.enddate)}</span> 일 남음</span>
             </div>
 
             <hr/>

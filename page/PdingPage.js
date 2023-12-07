@@ -132,7 +132,7 @@ const FriendsList = ({basicUrl}) => {
     <>
       <div className="full-screen all-all-screen">
         <Greenheader></Greenheader>
-          <div className='wantedFix' style={{width: '100%', top:'10vh'}} >
+          <div  style={{width: '100%', top:'10vh'}} >
             {/* <div style={{position: 'fixed'}}> */}
             {modal && 
                   <div id='modal'>
@@ -185,29 +185,35 @@ const FriendsList = ({basicUrl}) => {
                   <Card.Img variant="top" src={idx.img} width="100%"/>
                 </div>
                 <Card.Body className="p-2 border-0 card-body-h">
-                  <Card.Title className="fs-8">
+                  <Card.Title className="fs-8" style={{height:'7vh'}}>
                     <div>
                       <img src={idx.profile} className='card-profile'/>
                       <span className='card-title font-content' style={{marginLeft:'2vw'}}>{idx.writer}</span>
                     </div>  
                   </Card.Title>
-                  <Card.Title className="fs-8 " style={{fontWeight:'500', fontFamily:'pretendard-medium'}}>
+                  <Card.Title className="fs-8 " style={{fontWeight:'500', fontFamily:'pretendard-medium',height:'7vh'}}>
                     <span className='card-content'>
                       {idx.title}
                     </span>
                   </Card.Title>
-                  <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'space-between' }}>
-                    <Card.Text style={{ color: '#7DA79D', padding:'0 0.2vh',display:'flex', alignItems:'center'}}>
-                      <div style={{marginRight:'0.1vh'}}><img src={'/img/gift-friend.png'} className='card-img-small'></img></div>
-                      <span className='card-info'>{(idx.curr * 100) / idx.goal}%</span>
+                  <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'space-between', height:'4vh'}}>
+                    <Card.Text style={{ color: '#7DA79D', padding:'0 0.2vh', float:'left'}}>
+                      <div style={{marginRight:'0.1vh'}}>
+                        <img src={'/img/gift-friend.png'} className='card-img-small'/>
+                        <span className='card-info'>{(idx.curr * 100) / idx.goal}%</span>
+                      </div>
                     </Card.Text>
                     <Card.Text style={{ color: '#7b7b7b', padding:'0 0.2vh', float:'left'}}>
-                      <div style={{marginRight:'0.1vh'}}><img src={'/img/profile-2user.png'} className='card-img-small'></img></div>
-                      <span className='card-info'>{idx.count}명</span>
+                      <div style={{marginRight:'0.1vh'}}>
+                        <img src={'/img/profile-2user.png'} className='card-img-small'/>
+                        <span className='card-info'>{idx.count}명</span>
+                      </div>
                     </Card.Text>
                     <Card.Text style={{ color: '#7b7b7b', padding:'0 0.2vh', float:'right'}}>
-                      <div style={{marginRight:'0.1vh'}}><img src={'/img/calendar-friend.png'} className='card-img-small'></img></div>
-                      <span className='card-info'>{formatEndDate(idx.enddate)}</span>
+                      <div style={{marginRight:'0.1vh'}}>
+                        <img src={'/img/calendar-friend.png'} className='card-img-small'/>
+                        <span className='card-info'>{formatEndDate(idx.enddate)}</span>
+                      </div>
                     </Card.Text>
                   </div>
                 </Card.Body>
