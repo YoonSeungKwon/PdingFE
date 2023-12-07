@@ -152,16 +152,18 @@ const FriendsList = ({basicUrl}) => {
                   </div>
             }
             <div style={{position:'relative',textAlign: 'center', paddingTop:'3vh'}}>
-                <input className='input-friend-box'
-                value={searchEamil}
-                onChange={handleEmailChange}
-                placeholder='친구의 이름을 검색해 보세요.'
-                />
-                <button className='input-friend-btn' onClick={()=>{handleSearch()}}>
-                  <span className="material-symbols-outlined">
-                    search
-                  </span>
-                </button>
+                <div className='input-wrap'>
+                  <input className='input-friend-box'
+                  value={searchEamil}
+                  onChange={handleEmailChange}
+                  placeholder='친구의 이름을 검색해 보세요.'
+                  />
+                  <button className='input-friend-btn' onClick={()=>{handleSearch()}}>
+                    <span className="material-symbols-outlined">
+                      search
+                    </span>
+                  </button>
+                </div>
             </div>
             <br/>
             <div style={{marginLeft:'2vh'}}>
