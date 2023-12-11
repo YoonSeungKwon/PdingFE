@@ -200,7 +200,7 @@ const FriendsList = ({basicUrl}) => {
                     <Card.Text style={{ color: '#7DA79D', padding:'0 0.2vh', float:'left'}}>
                       <div style={{marginRight:'0.1vh'}}>
                         <img src={'/img/gift-friend.png'} className='card-img-small'/>
-                        <span className='card-info'>{(idx.curr * 100) / idx.goal}%</span>
+                        <span className='card-info'>{parseInt((idx.curr * 100) / idx.goal)}%</span>
                       </div>
                     </Card.Text>
                     <Card.Text style={{ color: '#7b7b7b', padding:'0 0.2vh', float:'left'}}>

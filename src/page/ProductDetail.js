@@ -49,8 +49,7 @@ const ProductDetail = ({basicUrl}) => {
     const temp = new Date(enddate.substr(0, 10)+' '+enddate.substr(11, 8)); 
     if(temp.getTime() - now.getTime() < 0)
       return '종료';
-    return ' 종료까지  ' + Math.floor((temp.getTime() - now.getTime()) / (1000*60*60*24)) + '일 ' + Math.floor(((temp.getTime() - now.getTime()) % (1000*60*60*24)) / (1000*60*60))
-    + '시간 남음';
+    return Math.floor((temp.getTime() - now.getTime()) / (1000*60*60*24));
   }
   
   const handleTime = (regdate) => {
@@ -119,7 +118,7 @@ const ProductDetail = ({basicUrl}) => {
             </div>
             <div className='font-content' style={{width:'90vw', marginTop:'1vh', height:'3vh', marginLeft:'3vw', fontSize:'2vh'}}>
               <span style={{float:'left', color:'#777777', width:'20vw', textAlign:'start'}}>마감일</span>
-              <span style={{float:'left'}}>🗓️{details.enddate.substr(0, 10)} / {handleDetailDate(details.enddate)}</span>
+              <span style={{float:'left'}}>🗓️{details.enddate.substr(0, 10)} / 종료까지 <span style={{color:'red'}}>{handleDetailDate(details.enddate)}</span> 일 남음</span>
             </div>
 
             <hr/>
@@ -176,7 +175,7 @@ const ProductDetail = ({basicUrl}) => {
         </div>}
         </div>
         <footer onClick={()=>{handlePay()}} style={{cursor:'pointer'}}>
-          <div style={{width:'100%', height:'10vh', textAlign:'center', backgroundColor:'#496D68', paddingTop:'3vh', borderRadius:'20px 20px 0px 0px'}}>
+          <div style={{width:'100vw', height:'10vh', textAlign:'center', backgroundColor:'#496D68', paddingTop:'3vh', borderRadius:'20px 20px 0px 0px'}}>
               <span className='font-bold font-content' style={{fontSize:'20px', color:'#FFFFFF'}}>프딩 참여하기</span>
           </div>
         </footer>
