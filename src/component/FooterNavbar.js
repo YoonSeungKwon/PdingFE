@@ -59,27 +59,27 @@ const FooterNavbar = () => {
     
 
   return (
-    <footer style={{ height:'8%', backgroundColor:'white', width:'100vw'}}>
+    <footer style={{ height:'50px', backgroundColor:'white', width:'100vw'}}>
             <div className='icons' onClick={handleHome}style={{float:'left'}}>
-                <img src={home? PressedHome : Home }alt="icon" style={{width:'25px'}}/>
-                <p style={home ? { color:'#496D68' } : { color: 'grey' }}>
+                <img src={home? PressedHome : Home }alt="icon" style={{width:'20px'}}/>
+                <p style={home ? { color:'#496D68'} : { color: 'grey'}}>
                     홈
                 </p>
             </div>
             <div className='icons' onClick={handlePding}style={{float:'left'}}>
-                <img src={pding? PressedPding : Pding }alt="icon"style={{width:'25px'}}/>
+                <img src={pding? PressedPding : Pding }alt="icon"style={{width:'20px'}}/>
                 <p style={pding ? { color:'#496D68' } : { color: 'grey' }}>
-                    친구
+                    프딩
                 </p>
             </div>
             <div className='icons' onClick={handleAlarm}style={{float:'left'}}>
-                <img src={alarm? PressedAlarm : Alarm }alt="icon"style={{width:'25px'}}/>
+                <img src={alarm? PressedAlarm : Alarm }alt="icon"style={{width:'20px'}}/>
                 <p style={alarm ? { color:'#496D68' } : { color: 'grey' }}>
                     알림
                 </p>
             </div>
             <div className='icons' onClick={handleMine} style={{float:'left'}}>
-                <img src={mine? PressedMine : Mine }alt="icon" style={{width:'25px'}}/>
+                <img src={mine? PressedMine : Mine }alt="icon" style={{width:'20px'}}/>
                 <p style={mine ? { color:'#496D68' } : { color: 'grey' }}>
                     MY
                 </p>
