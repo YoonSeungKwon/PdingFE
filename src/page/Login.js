@@ -78,7 +78,7 @@ const Login = ({basicUrl}) => {
     <div className='loginPage'>
       <div className='myloginPage'>
       <div className='loginText'>
-          <button className='btnclas' onClick={gotoPreview}>&lt;</button>
+          <button className='btnclas' onClick={gotoPreview} style={{color:'black'}}>&lt;</button>
           <div style={{float:'center', marginTop:'5px'}}>로그인</div>
         </div>
       <div>

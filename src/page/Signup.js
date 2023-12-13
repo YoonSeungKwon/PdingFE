@@ -95,7 +95,7 @@ const Signup = ({basicUrl}) => {
     <div className='loginPage' style={{border:'1px solid black'}}>
       <div className='mysignupPage'>
         <div className='loginText'>
-          <button className='btnclas' onClick={gotoPreview}>&lt;</button>
+          <button className='btnclas' onClick={gotoPreview} style={{color:'black'}}>&lt;</button>
           <div style={{float:'center'}}>회원가입</div>
         </div>
         <div className='Signup'>

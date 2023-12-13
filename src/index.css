@@ -305,11 +305,6 @@ footer{
   margin-top: 18vh;
 }
 
-.mysignupPage{
-  padding-bottom: 60%;
-  text-align: center;
-}
-
 .loginText{
   margin-top: 53px;
   height: 56px;
@@ -809,7 +804,8 @@ footer{
   }
   .input-friend-btn{
     position: relative;
-    margin-top:-40px;
+    margin-top:-39px;
+    margin-right:10px;
     float:right;
     border: 0;
     background-color: transparent;
