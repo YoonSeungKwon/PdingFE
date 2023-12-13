@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const ProductDetail = ({basicUrl}) => {
 
   const state = useLocation();
+  const formatter = new Intl.NumberFormat('en-US');
   const navigate = new useNavigate();
 
   const [now, setNow] = useState(new Date());
@@ -42,6 +43,12 @@ const ProductDetail = ({basicUrl}) => {
       backgroundColor:'#496D68',
       borderRadius:'15px 15px 15px 15px',
       position:'absolute'
+    }
+  }
+
+  const handleStyle = () =>{
+    return {
+      marginLeft:((details.curr/details.goal) * 94)-2+'vw',
     }
   }
 
@@ -133,11 +140,21 @@ const ProductDetail = ({basicUrl}) => {
             <div style={{marginLeft:'3vw', marginTop:'3vh'}}>
               <div style={{width:'92vw', textAlign:'center'}}>
                 <span className='font-content' style={{fontSize:'14px', color:'#777777', float:'left'}}>0원</span>
-                <span className='font-content' style={{fontSize:'14px', color:'#777777', float:'right'}}>{details.goal}원</span>
+                <span className='font-content' style={{fontSize:'14px', color:'#777777', float:'right'}}>{formatter.format(details.goal)}원</span>
               </div>
               <br/>
               <div style={{position:'absolute', overflow:'hidden', width:'92vw', height:'3vh', backgroundColor:'#eeeeee', borderRadius:'15px 15px 15px 15px'}}>
-                <div style={handlePercentage()}></div>
+                <div style={handlePercentage()}>
+                </div>
+              </div>
+              <div style={{position:'absolute', marginTop:'-1.5vh'}}>
+                <div style={handleStyle()}>
+                  <img src='/img/Union.png' style={{position:'absolute', marginTop:'-3vh', marginLeft:'-1vw'}}/>
+                  <span className='font-content' style={{color:'#FFFFFF', position:'absolute', width:'10vw',fontSize:'1.5vh', marginTop:'-3vh', marginLeft:'1vw'}}>
+                    {formatter.format(details.curr)}원
+                  </span>
+                  <img src='/img/pding.png' className='pding' />
+                </div>
               </div>
               <br/>
               <div style={{width:'92vw', textAlign:'center', marginTop:'3vh'}}>

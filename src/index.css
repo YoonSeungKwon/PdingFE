@@ -1222,3 +1222,7 @@ input::-webkit-inner-spin-button {
   cursor:pointer;
   background-color:#496D68;
 }
+
+.pding{
+  width: 40px;
+}

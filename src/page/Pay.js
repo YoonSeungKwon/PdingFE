@@ -7,6 +7,7 @@ const Pay = ({basicUrl}) =>{
 
 
     const state = useLocation();
+    const formatter = new Intl.NumberFormat('en-US');
     const navigate = useNavigate();
 
     const [details, setDetails] = useState('');
@@ -85,7 +86,7 @@ const Pay = ({basicUrl}) =>{
                     <img src={details.profile} className="profileBox-small" style={{width:'3vh', height:'3vh'}}/>
                     <span className='font-content' style={{fontSize:'14px', marginLeft:'3vw'}}>{details.writer}</span>
                     <span className='font-content' style={{display:'block', fontSize:'14px', marginTop:'0.5vh'}}>{details.title}</span>
-                    <span className='font-content' style={{fontSize:'14px', marginTop:'0.5vh'}}>{details.goal}원 
+                    <span className='font-content' style={{fontSize:'14px', marginTop:'0.5vh'}}>{formatter.format(details.goal)}원 
                         {details&&
                         <span style={{color:'#777777', marginLeft:'2vw', fontSize:'12px', lineHeight:'12px'}}>
                         {parseInt((details.curr/details.goal)*100)}% 진행중 · <span style={{color:'red'}}>{handleDetailDate(details.enddate)}</span> 일 남음
