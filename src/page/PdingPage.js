@@ -151,18 +151,18 @@ const FriendsList = ({basicUrl}) => {
                     </div>
                   </div>
             }
-            <div style={{position:'relative',textAlign: 'center', paddingTop:'3vh'}}>
+            <div style={{textAlign: 'center', paddingTop:'3vh'}}>
                 <div className='input-wrap'>
                   <input className='input-friend-box'
                   value={searchEamil}
                   onChange={handleEmailChange}
                   placeholder='친구의 이름을 검색해 보세요.'
                   />
-                  <button className='input-friend-btn' onClick={()=>{handleSearch()}}>
-                    <span className="material-symbols-outlined">
+                  <div className='input-friend-btn' onClick={()=>{handleSearch()}}>
+                    <span className="material-symbols-outlined" style={{color:'black'}}>
                       search
                     </span>
-                  </button>
+                  </div>
                 </div>
             </div>
             <br/>
@@ -172,9 +172,9 @@ const FriendsList = ({basicUrl}) => {
             </div>
             <br/>
             <div  style={{textAlign:'center',display:'flex', paddingBottom:'2vh', marginLeft:'2vh'}}>
-              <button className={`category-btn ${selectedButton === '전체' ? 'selected' : ''}`} onClick={() => fetchData('전체')}>전체</button>
-              <button className={`category-btn ${selectedButton === '생일' ? 'selected' : ''}`} onClick={() => fetchData('생일')}>생일</button>
-              <button className={`category-btn ${selectedButton === '졸업' ? 'selected' : ''}`} onClick={() => fetchData('졸업')}>졸업</button>
+              <button className={`category-btn ${selectedButton === '전체' ? 'selected' : ''}`} style={{color:'black'}} onClick={() => fetchData('전체')}>전체</button>
+              <button className={`category-btn ${selectedButton === '생일' ? 'selected' : ''}`} style={{color:'black'}} onClick={() => fetchData('생일')}>생일</button>
+              <button className={`category-btn ${selectedButton === '졸업' ? 'selected' : ''}`} style={{color:'black'}} onClick={() => fetchData('졸업')}>졸업</button>
             </div>
       </div>
 
@@ -185,7 +185,7 @@ const FriendsList = ({basicUrl}) => {
                   <Card.Img variant="top" src={idx.img} width="100%"/>
                 </div>
                 <Card.Body className="p-2 border-0 card-body-h">
-                  <Card.Title className="fs-8" style={{height:'7vh'}}>
+                  <Card.Title className="fs-8" style={{height:'5vh'}}>
                     <div>
                       <img src={idx.profile} className='card-profile'/>
                       <span className='card-title font-content' style={{marginLeft:'2vw'}}>{idx.writer}</span>

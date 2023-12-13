@@ -792,12 +792,12 @@ footer{
     margin-top:16vh;
   }
   .input-wrap{
-    width: 75vw;
+    width: 90vw;
     height: 40px;
-    margin-left: 12.5vw;
+    margin-left: 5vw;
   }
   .input-friend-box{
-    width: 75vw;
+    width: 90vw;
     height: 40px;
     border: 1px solid grey;
     border-radius: 10px;
@@ -808,9 +808,9 @@ footer{
     align-items: center;
   }
   .input-friend-btn{
-    position: absolute;
-    right: 12.5vw;
-    margin-top: 1vh;
+    position: relative;
+    margin-top:-40px;
+    float:right;
     border: 0;
     background-color: transparent;
   }
@@ -958,12 +958,12 @@ footer{
     text-align: center;
   }
   .input-wrap{
-    width: 50vw;
+    width: 75vw;
     height: 40px;
-    margin-left: 25vw;
+    margin-left: 12.5vw;
   }
   .input-friend-box{
-    width: 50vw;
+    width: 75vw;
     height: 40px;
     border: 1px solid grey;
     border-radius: 10px;
@@ -974,9 +974,9 @@ footer{
     align-items: center;
   }
   .input-friend-btn{
-    position: absolute;
-    right: 26vw;
-    margin-top: 1vh;
+    position: relative;
+    float:right;
+    margin-top: -40px;
     border: 0;
     background-color: transparent;
   }
@@ -1123,12 +1123,12 @@ footer{
     height: 100vh;
   }
   .input-wrap{
-    width: 30vw;
+    width: 50vw;
     height: 40px;
-    margin-left: 35vw;
+    margin-left: 25vw;
   }
   .input-friend-box{
-    width: 30vw;
+    width: 50vw;
     height: 40px;
     border: 1px solid grey;
     border-radius: 10px;
@@ -1139,9 +1139,9 @@ footer{
     align-items: center;
   }
   .input-friend-btn{
-    position: absolute;
-    right: 33.5vw;
-    margin-top: 1vh;
+    position: relative;
+    float:right;
+    margin-top: -40px;
     border: 0;
     background-color: transparent;
   }
