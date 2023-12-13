@@ -101,11 +101,15 @@ const ProductDetail = ({basicUrl}) => {
               <div style={{float:'left', marginLeft:'3vw', height:'10vh'}}>
                 <img src={details.profile} className='profileBox-small'/>
               </div>
-              <span className='font-content font-bold font-block' style={{width:'70vw', textAlign:'start', fontSize:'18px', float:'left', lineHeight:'5vh', marginLeft:'5vw'}}>{details.writer}</span>
-              <span className='font-content' style={{width:'70vw', textAlign:'start', fontSize:'11px', color:'#aaaaaa', float:'left', lineHeight:'1vh', marginLeft:'5vw'}}>{handleTime(details.regdate)}</span>
+              <span className='font-content font-bold font-block' style={{width:'70vw', textAlign:'start', fontSize:'18px', float:'left', lineHeight:'5vh', marginLeft:'5vw'}}>
+                {details.writer}
+              </span>
+              <span className='font-content' style={{width:'70vw', textAlign:'start', fontSize:'11px', color:'#aaaaaa', float:'left', lineHeight:'1vh', marginLeft:'5vw'}}>
+                {handleTime(details.regdate)}
+              </span>
             </div>
             {/* 제목 및 내용 */}
-            <div className='font-content font-bold' style={{fontSize:'19px', textAlign:'start', marginLeft:'3vw', marginRight:'3vw'}}>{details.title}</div>
+            <div className='font-medium' style={{fontSize:'19px', textAlign:'start', marginLeft:'3vw', marginRight:'3vw'}}>{details.title}</div>
             <div className='font-content'           style={{fontSize:'14px', textAlign:'start', marginLeft:'3vw', marginRight:'3vw'}}>{details.content}</div>
             
             <hr/>
@@ -132,8 +136,8 @@ const ProductDetail = ({basicUrl}) => {
 
             {/* 텍스트 */}
             <div style={{textAlign:'start'}}>
-              <span className='font-content font-bold' style={{display:'block', marginLeft:'3vw', fontSize:'18px'}}>프딩 게이지</span>
-              <span className='font-content' style={{display:'block', marginLeft:'3vw', fontSize:'14px'}}>친구의 프딩 게이지를 채워 주세요!🔥</span>
+              <span className='font-medium' style={{display:'block', marginLeft:'3vw', fontSize:'18px'}}>프딩 게이지</span>
+              <span className='font-content' style={{display:'block', marginLeft:'3vw', fontSize:'12px'}}>친구의 프딩 게이지를 채워 주세요!🔥</span>
             </div>
 
             {/* 퍼센트 */}
@@ -166,8 +170,8 @@ const ProductDetail = ({basicUrl}) => {
 
             {/* 텍스트 */}
             <div style={{textAlign:'start', marginTop:'5vh'}}>
-              <span className='font-content font-bold' style={{marginLeft:'3vw', fontSize:'18px', lineHeight:'14px'}}>참여 중인 친구</span>
-              <span className='font-content font-bold' style={{marginLeft:'1vw', fontSize:'14px', lineHeight:'14px'}}>{details.count} 명</span>
+              <span className='font-medium' style={{marginLeft:'3vw', fontSize:'18px', lineHeight:'14px'}}>참여 중인 친구</span>
+              <span className='font-content' style={{marginLeft:'1vw', fontSize:'14px', lineHeight:'14px'}}>{details.count} 명</span>
             </div>
 
             {/* 참여중인 친구 */}
@@ -193,7 +197,7 @@ const ProductDetail = ({basicUrl}) => {
         </div>
         <footer onClick={()=>{handlePay()}} style={{cursor:'pointer'}}>
           <div style={{width:'100vw', height:'10vh', textAlign:'center', backgroundColor:'#496D68', paddingTop:'3vh', borderRadius:'20px 20px 0px 0px'}}>
-              <span className='font-bold font-content' style={{fontSize:'20px', color:'#FFFFFF'}}>프딩 참여하기</span>
+              <span className='font-medium' style={{fontSize:'20px', color:'#FFFFFF'}}>프딩 참여하기</span>
           </div>
         </footer>
     </div>
