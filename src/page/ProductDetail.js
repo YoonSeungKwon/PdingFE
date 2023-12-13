@@ -48,7 +48,7 @@ const ProductDetail = ({basicUrl}) => {
 
   const handleStyle = () =>{
     return {
-      marginLeft:((details.curr/details.goal) * 94)-1+'vw',
+      marginLeft:((details.curr/details.goal) * 94)-3+'vw',
     }
   }
 
