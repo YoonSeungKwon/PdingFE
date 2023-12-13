@@ -305,17 +305,6 @@ footer{
   margin-top: 18vh;
 }
 
-.loginText{
-  margin-top: 53px;
-  height: 56px;
-  text-align:center;
-  width:100%;
-  align-items: center;
-  font-family : 'pretendard-medium';
-  font-size: x-large;
-  top: 0;
-  position: fixed;
-}
 
 .input-info-box{
   width: 48vh;
@@ -767,12 +756,12 @@ footer{
   }
   .loginText{
     width: 100%;
-    margin-top: 53px;
+    margin-top: 10px;
     height: 56px;
     text-align:center;
     align-items: center;
     font-family : 'pretendard-medium';
-    font-size: x-large;
+    font-size: 3vh;
     top: 0;
     position: fixed;
   }

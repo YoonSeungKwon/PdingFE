@@ -180,7 +180,7 @@ const FriendsList = ({basicUrl}) => {
 
           <div className=' pding-all-category-screen'>
             {project.map((idx) => (
-              <Card className='cardsMain cardsShadow' key={idx.img} onClick={()=>handleProductPage(idx)} style={{ width: '45%', marginBottom: '20px' }}>
+              <Card className='cardsMain cardsShadow' key={idx.img} onClick={()=>handleProductPage(idx)} style={{ width: '45%', marginBottom: '20px', marginLeft:'2.5%', marginRight:'2.5%'}}>
                 <div style={{width:'100%', height:'40%', overflow:'hidden', borderRadius:'5px 5px 5px 5px', backgroundColor:'#cccccc', textAlign:'center', display:'flex', justifyContent:'center'}}>
                   <Card.Img variant="top" src={idx.img} width="100%"/>
                 </div>

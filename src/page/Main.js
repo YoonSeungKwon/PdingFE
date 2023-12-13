@@ -83,7 +83,7 @@ const Main = ({basicUrl}) => {
               token={appKey}
               onSuccess={handleSuccess}
               onFail={handleFailure}
-              style={{float:'left', border: '0px', backgroundColor:'transparent'}}
+              style={{border: '0px', backgroundColor:'transparent'}}
               >
                 <img src='/img/kakao_login_large_wide.png' className='kakao-btn' />
               </KakaoLogin>
