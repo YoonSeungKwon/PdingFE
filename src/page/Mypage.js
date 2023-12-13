@@ -6,16 +6,33 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import axios from 'axios';
 
 
 const Home = ({basicUrl}) => {
 
   const navigate = useNavigate();
   const {state} = useLocation();
+  const [modal, setModal] = useState(false);
+  const [file, setFile] = useState('');
 
   const userProfile = localStorage.getItem('userProfile');
   const userName = localStorage.getItem('userName');
   const userEmail = localStorage.getItem('userEmail');
+
+  const handleProfile = () =>{
+    const formdata = new FormData();
+    formdata.append('file', file)
+    axios.post(basicUrl +'/api/v1/members/profile', formdata)
+    .then((res)=>{
+      console.log(res)
+      localStorage.setItem('userProfile', res.data)
+      setModal(false)
+    }).catch((error)=>{
+      console.log(error)
+      setModal(false)
+    })
+  }
 
   const handleLogout = () => {
     localStorage.clear();
@@ -34,11 +51,23 @@ const Home = ({basicUrl}) => {
       
       <div className='all-screen' style={{position: 'relative'}}>
         <div className='mypageProfile' style={{textAlign:'center', alignItems:'center', backgroundColor:'#f5f5f5', justifyContent:'center'}}>
+          {modal && 
+                  <div id='modal'>
+                    <div id='modal-content'>
+                      <button onClick={()=>setModal(false)} id='modal-btn'>X</button>
+                      <span className='font-content font-bold' style={{}}>프로필 이미지 변경</span>
+                      <div >
+                        <input type='file' onChange={(e)=>{setFile(e.target.files[0])}}/>      
+                        <input type='submit' onClick={()=>{handleProfile()}}/>            
+                      </div>
+                    </div>
+                  </div>
+          }
           <div>
             <img src={userProfile} className=' mypageProfileBox' />
             <div style={{height:'4vh', display:'flex', alignItems:'center', justifyContent:'center', marginTop:'-5vh', marginRight:'-10vh'}}>
-              <div className='mypageWriteButton'onClick={()=>navigate("/write")}></div>
-              <img src='/img/edit.png' style={{height:'3vh', position:'absolute'}}></img>
+              <div className='mypageWriteButton'></div>
+              <img src='/img/edit.png' style={{height:'3vh', position:'absolute'}} onClick={()=>setModal(true)}></img>
             </div>
           </div>
           <div style={{whiteSpace:'nowrap', marginTop:'3vh'}}>

@@ -582,6 +582,7 @@ footer{
   height:5vh;
   text-align: center;
   line-height: 5vh;
+  cursor: pointer;
 }
 
 .mypageMenuText{
