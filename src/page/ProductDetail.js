@@ -150,7 +150,7 @@ const ProductDetail = ({basicUrl}) => {
               <div style={{position:'absolute', marginTop:'-1.5vh'}}>
                 <div style={handleStyle()}>
                   <img src='/img/Union.png' style={{position:'absolute', marginTop:'-3vh', marginLeft:'-1vw'}}/>
-                  <span className='font-content' style={{color:'#FFFFFF', position:'absolute', width:'10vw',fontSize:'1.5vh', marginTop:'-3vh', marginLeft:'1vw'}}>
+                  <span className='font-content' style={{color:'#FFFFFF', position:'absolute', width:'59px', fontSize:'1.5vh', marginTop:'-3vh', marginLeft:'-1vw'}}>
                     {formatter.format(details.curr)}원
                   </span>
                   <img src='/img/pding.png' className='pding' />
