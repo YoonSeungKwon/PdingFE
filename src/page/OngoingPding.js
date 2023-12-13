@@ -11,7 +11,7 @@ const OngoingPding = ({basicUrl}) => {
     const {state} = useLocation();
 
     useEffect(() => {
-        axios.get(basicUrl + 'api/v1/projects/')
+        axios.get(basicUrl + '/api/v1/projects/')
       .then((res) => {
         const list = res.data;
         console.log(list);
@@ -24,7 +24,8 @@ const OngoingPding = ({basicUrl}) => {
       }, []);
 
       const handleProductPage = (idx) =>{
-        navigate('/details/'+idx, {state:[state[0],state[1], idx]});
+        console.log(idx)
+        navigate('/details/'+idx.idx, {state:idx.idx});
       }
 
       const formatEndDate = (endDateString) => {
@@ -39,40 +40,46 @@ const OngoingPding = ({basicUrl}) => {
         <div className='all-screen' >
           <div className='mypageHeader' >
             <div style={{position:'relative', height:'100%'}}>
-              <div style={{height:'53px'}}></div>
+              <div style={{height:'10px'}}></div>
               <div className='mypageheadertxt'>
               <div style={{position:'absolute', width:'7vw', float:'left', cursor:'pointer'}} onClick={()=>{navigate(-1)}}>
                     <img src='/img/arrow-left-black.png' className='back-btn'/>
                 </div>진행 중인 프딩<img src='/img/arrow-left.png' onClick={()=>navigate("/mypage/"+userEmail)} className='mypageHeaderimg' style={{width:'26.26px', height:'24px'}}></img></div>
-            </div>
+              </div>
+              <div className='category_wrap pding-all-category-screen' style={{ margin: '0px auto', marginTop: '10px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+              {project.map((idx) => (
+                <Card className='cardsMain cardsShadow' key={idx.img} onClick={()=>handleProductPage(idx)} style={{ width: '45%', marginBottom: '20px' }}>
+                  <Card.Img variant="top" src={idx.img} height="100px" width="160px" />
+                  <Card.Body className="p-2 border-0">
+                    <Card.Title className="fs-8"><img width={'24px'} src={idx.profile}></img>{idx.writer}</Card.Title>
+                    <Card.Title className="fs-8 " style={{fontSize:'14px', fontWeight:'500', fontFamily:'pretendard-medium'}}>{idx.title}</Card.Title>
+                    <div style={{textAlign:'center',display:'flex', justifyContent:'center'}}>
+                      <Card.Text style={{ color: '#7DA79D', fontSize:'12px', padding:'0 0.2vh', float:'left'}}>
+                        <div style={{marginRight:'0.1vh'}}>
+                          <img src={'/img/gift-friend.png'} width={'12px'}></img>
+                          {parseInt((idx.curr * 100) / idx.goal)}%
+                        </div>
+                      </Card.Text>
+                      <Card.Text style={{ color: '#7b7b7b', fontSize:'12px', padding:'0 0.2vh', float:'left'}}>
+                        <div style={{marginRight:'0.1vh'}}>
+                          <img src={'/img/profile-2user.png'} width={'12px'}></img>
+                          {idx.count}명
+                        </div>
+                      </Card.Text>
+                      <Card.Text style={{ color: '#7b7b7b', fontSize:'12px', padding:'0 0.2vh', float:'right'}}>
+                        <div style={{marginRight:'0.1vh'}}>
+                          <img src={'/img/calendar-friend.png'} width={'12px'}></img>
+                          {formatEndDate(idx.enddate)}
+                        </div>
+                      </Card.Text>
+                    </div>
+                  </Card.Body>
+                </Card>
+              ))}
+          </div>
           </div>
         </div>
     </div>
-    <div className='category_wrap pding-all-category-screen' style={{ margin: '0px auto', marginTop: '100px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
-            {project.map((idx) => (
-              <Card className='cardsMain cardsShadow' key={idx.img} onClick={()=>handleProductPage(idx.idx)} style={{ width: '45%', marginBottom: '20px' }}>
-                <Card.Img variant="top" src={idx.img} height="100px" width="160px" />
-                <Card.Body className="p-2 border-0">
-                  <Card.Title className="fs-8"><img width={'24px'} src={idx.profile}></img>{idx.writer}</Card.Title>
-                  <Card.Title className="fs-8 " style={{fontSize:'14px', fontWeight:'500', fontFamily:'pretendard-medium'}}>{idx.title}</Card.Title>
-                  <div style={{textAlign:'center',display:'flex', justifyContent:'center'}}>
-                    <Card.Text style={{ color: '#7DA79D', fontSize:'12px', padding:'0 0.2vh',display:'flex', alignItems:'center'}}>
-                      <div style={{marginRight:'0.1vh'}}><img src={'/img/gift-friend.png'} width={'12px'}></img></div>
-                      {(idx.curr * 100) / idx.goal}%
-                    </Card.Text>
-                    <Card.Text style={{ color: '#7b7b7b', fontSize:'12px', padding:'0 0.2vh',display:'flex' , alignItems:'center' }}>
-                      <div style={{marginRight:'0.1vh'}}><img src={'/img/profile-2user.png'} width={'12px'}></img></div>
-                      {idx.idx}명
-                    </Card.Text>
-                    <Card.Text style={{ color: '#7b7b7b', fontSize:'12px', padding:'0 0.2vh',display:'flex' , alignItems:'center'}}>
-                      <div style={{marginRight:'0.1vh'}}><img src={'/img/calendar-friend.png'} width={'12px'}></img></div>
-                      {formatEndDate(idx.enddate)}
-                    </Card.Text>
-                  </div>
-                </Card.Body>
-              </Card>
-            ))}
-          </div>
     </>
   )
 }
