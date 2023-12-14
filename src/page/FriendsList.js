@@ -124,7 +124,7 @@ const FriendsList = ({basicUrl}) => {
           <div className='all-screen' >
             <div className='mypageHeader' >
               <div style={{position:'relative', height:'100%'}}>
-                <div style={{height:'53px'}}></div>
+                <div style={{height:'20px'}}></div>
                 <div className='mypageheadertxt'>
                 <div style={{position:'absolute', width:'7vw', float:'left', cursor:'pointer'}} onClick={()=>{navigate(-1)}}>
                     <img src='/img/arrow-left-black.png' className='back-btn'/>
