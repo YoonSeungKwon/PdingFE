@@ -153,7 +153,7 @@ const FriendsList = ({basicUrl}) => {
                 onChange={handleEmailChange}
                 placeholder='친구의 이메일을 검색해 보세요.'
                 />
-                <button className='input-friend-btn' onClick={handleSearch}><span class="material-symbols-outlined">
+                <button className='input-friend-btn' onClick={handleSearch}><span class="material-symbols-outlined" style={{color:'black', marginRight:'2vw'}}>
                   search
                   </span></button>
                               </div>
